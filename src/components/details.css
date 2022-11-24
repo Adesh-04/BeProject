@@ -1,0 +1,39 @@
+
+body{
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image:  radial-gradient(#282a43 0.5px, transparent 0.5px), radial-gradient(#282a43 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+}
+    
+#Info{
+    background-color: white;
+    font-weight: 600;
+    color: black;
+    padding: 1.725rem 0;
+    display: flex ;
+    column-gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-btn{
+    background-color: rgba(50, 50, 245, 0.76); 
+    color : white;
+    cursor: default;
+}
+
+.left-btn{
+    position: absolute;
+    left : 10px;
+    top : 10px;
+}
+
+.past-info > ol{
+    background-color: white;
+    margin: 2rem 30%;
+    padding: 1rem 3rem;
+    font-weight: 600;
+}
+
