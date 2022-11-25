@@ -32,15 +32,30 @@ export const AddForm = () =>{
         Past_Med: {0: ''}
     }
 
+    const validate = (e) =>{
+        e.preventDefault();
+        var tar = e.target
+        
+        if (tar.id.value.length != 20){
+            alert("Enter Correct Id")
+        }else{ 
+            tar.name.value && tar.address.value && tar.height.value && tar.weight.value && tar.age.value?
+                updateData(e)
+            : alert("Enter credentials")
+            
+        }
+    }
+
     const updateData = (e) =>{
-        e.preventDefault()
-        data.id = id
+        data.id = e.target.id.value
         data.Address = e.target.address.value
         data.Age = e.target.age.value
         data.Name = e.target.name.value
         data.Height = e.target.height.value
         data.Weight = e.target.weight.value
         data.BloodGroup = e.target.blood.value
+        data.Disease = e.target.disease.value
+        data.Condition = e.target.disease.value
 
         sendData(data)
     }
@@ -54,17 +69,17 @@ export const AddForm = () =>{
     return(
         <div>
 
-            <button className="btn left-btn" ><a className='btn btn-primary' href='/welcome'>Home </a> </button>
+            <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Home </a> </button>
 
             <h3 className='m-3'>Add Patient Data</h3> 
             
-            <form className='form mt-5' onSubmit={(e)=>{updateData(e)}}>
+            <form className='form mt-5' onSubmit={(e)=>{validate(e)}}>
 
                 <div className='AddForm'>
 
                 
                     <label> Device Id  :  
-                        <input type="text" name="Id" /> 
+                        <input type="text" name="id" /> 
                     </label>
                     
                     <label> Name  :  
@@ -89,6 +104,14 @@ export const AddForm = () =>{
 
                     <label> Blood Group  :  
                         <input type="text" name="blood" />
+                    </label>
+                    
+                    <label> Disease  :  
+                        <input type="text" name="disease" />
+                    </label>
+
+                    <label> Condition  :  
+                        <input type="text" name="condition" />
                     </label>
                 </div>
                 <br/><br/>

@@ -4,8 +4,7 @@ import 'bootstrap/dist/js/bootstrap';
 import './app.css'
 import { Home } from './components/home';
 import { Login, Signup} from './components/login/login'
-import { Welcome } from './components/Main/welcome'
-import { AddForm, UpdateForm } from './components/Main/form'
+import { AddForm} from './components/Main/form'
 import { Main } from './components/Main/main';
 import { Details } from './components/Main/more-details';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
@@ -20,9 +19,7 @@ function App() {
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/form" element={<Login/>}/>
             <Route exact path="/signup" element={<Signup/>}/>
-            <Route exact path="/welcome" element={<Welcome/>}/>
             <Route exact path="/add" element={<AddForm/>}/>
-            <Route exact path="/update" element={<UpdateForm/>}/>
             <Route exact path="/home" element={<Main/>}/>
             <Route exact path={'/patient=:userId'} element={<Details  />}/>
           </Routes>
