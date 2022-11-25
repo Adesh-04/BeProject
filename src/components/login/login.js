@@ -1,51 +1,60 @@
 import './login.css';
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
+import { db } from './../../firebase';
+import {collection, getDocs} from 'firebase/firestore'
+
+export const Login = () => {
+
+    const navigate = useNavigate()
+    const [login, setLogin] = useState([])
+    const loginRef = collection(db, 'login')
+
+    useEffect(()=>{
+
+        const getData = async() =>{
+            const data = await getDocs(loginRef);
+            setLogin(data.docs.map((doc) => ({
+                ...doc.data(), id : doc.id
+            })))
+        }
+
+        getData();
+    }, [])
 
 
-function Login() {
-    
+    const validate = (e) =>{
+        e.preventDefault()
+        var usr = e.target.username.value
+        var pwd = e.target.Password.value
+        
+        login.map( (item, i) => (
+
+            usr && pwd  ? 
+                usr == login[i].userid ?
+                    pwd == login[i].password ?
+                        navigate('/welcome')
+                    : console.log("Password Wrong")
+                : console.log("username Wrong") 
+            : console.log('Enter')
+                
+            
+        ))
+    }
+
+
     return (
         <div className="App ">
-            {/* NAVBAR */}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">City Hospital</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">View Patients</a>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    More
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Add New Patient</a></li>
-                                    <li><a className="dropdown-item" href="#">Update patient record</a></li>
-                                    <li><hr className="dropdown-divider"/></li>
-                                    <li><a className="dropdown-item" href="#">Enter unique patient ID</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        
-                    </div>
-                </div>
-            </nav>
-
+            <button className="btn left-btn" ><a className='btn btn-primary' href='/signup'> Signup </a> </button>
+            <br/><br/><br/>
             {/* body */}
-            <div className="">
+            <div className="mt-3">
                 <h1 className='mt-5 '>PHR Login</h1>
-                <form method='get' action='home' className='header mt-5'>
+                <form className='header mt-5' onSubmit={(e)=>{validate(e)}}>
                     <label htmlFor="username">Username: </label>
                     <input type="text" name="username" id="username" />
 
-                    <label htmlFor="password">Password: </label>
+                    <label htmlFor="Password">Password: </label>
                     <input type="password" name="Password" id="password" />
 
                     <button type="submit" className="mt-2 btn btn-success btn-sm">Login</button>
@@ -59,4 +68,11 @@ function Login() {
         </div>
     )
 }
-export default Login;
+
+export const Signup = () => {
+    return(
+        <div>
+            <h1>Signup</h1>
+        </div>
+    )
+}

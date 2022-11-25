@@ -12,6 +12,12 @@
     min-height : 100vh;
 }
 
+.left-btn{
+    position: absolute;
+    left : 1em;
+    top : 2em;
+}
+
 .Header{
     text-align: center;
     font-weight: 600;
