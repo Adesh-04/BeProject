@@ -70,56 +70,40 @@ export const AddForm = () =>{
         <div>
 
             <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Home </a> </button>
-
             <h3 className='m-3'>Add Patient Data</h3> 
-            
-            <form className='form mt-5' onSubmit={(e)=>{validate(e)}}>
-
-                <div className='AddForm'>
-
-                
-                    <label> Device Id  :  
-                        <input type="text" name="id" /> 
-                    </label>
-                    
-                    <label> Name  :  
+            <form className='form mt-5' onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
+                <div className='main'>
+                    <fieldset>
+                        <label htmlFor='id'> Device Id  :  </label>
+                        <input type="text" id='id' pattern="^[a-z0-9]{20}$" title='Id is Invalid' name="id" /> 
+                        
+                        <label htmlFor='name'> Name  :  </label>
                         <input type="text" name="name" />
-                    </label>
-                    
-                    <label> Address  :  
+                        
+                        <label htmlFor='address'> Address  :  </label>
                         <input type="text" name="address" />
-                    </label>
 
-                    <label> Age  :  
+                        <label htmlFor='age'> Age  :  </label>
                         <input type="text" name="age" />
-                    </label>
+                    </fieldset>
+                    <fieldset>                    
+                        <label htmlFor='height'> Height  :  </label>
+                        <input type="text" name="height" />                        
 
-                    <label> Height  :  
-                        <input type="text" name="height" />
-                    </label>
+                        <label htmlFor='weight'> Weight  :  </label>
+                        <input type="text" name="weight" />                        
 
-                    <label> Weight  :  
-                        <input type="text" name="weight" />
-                    </label>
+                        <label htmlFor='blood'> Blood Group  :  </label>
+                        <input type="text" name="blood" />                        
+                        
+                        <label htmlFor='disease'> Disease  :  </label>
+                        <input type="text" name="disease" />                        
 
-                    <label> Blood Group  :  
-                        <input type="text" name="blood" />
-                    </label>
-                    
-                    <label> Disease  :  
-                        <input type="text" name="disease" />
-                    </label>
-
-                    <label> Condition  :  
-                        <input type="text" name="condition" />
-                    </label>
+                        <label htmlFor='condition'> Condition  :  </label>
+                        <input type="text" name="condition" />                   
+                    </fieldset>
                 </div>
-                <br/><br/>
-                <div>
-                    <div> 
-                    </div>
-                </div>
-                <div></div>
+                
                 <button type="submit" className="mt-2 btn btn-success btn-sm">Add</button>
 
             </form>
