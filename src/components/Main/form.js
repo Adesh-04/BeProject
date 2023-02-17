@@ -7,22 +7,20 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const AddForm = () =>{
-
+    // for redirecting to other pages
     const navigate = useNavigate()
+    // Creating 20 letter unique Id
     var id = uuid().split('-')
     id = id.join('')
     id = id.slice(0,20)
+    // Console.log for testing
     console.log(id)
 
-    const [sympt, setSympt] = useState([])
-    const [curr, setCurr] = useState([])
-    const [past, setPast] = useState([])
-    const [gen, setGen] = useState([])
-    const [allergy, setAllergy] = useState([])
-
+    // Reference to the patient_data collection in firestore database
     const patientRef = collection(db, "patient_data")
 
     var data = {
+        // This is the skeleton for the data document which will be sent over to database
         id : '', Address : '', Age: '', BP: '', BloodGroup: '',
         Condition: '', Disease: '', Gender: '', Height: '', Weight: '',
         Name: '', Pulse: '', 
@@ -33,12 +31,17 @@ export const AddForm = () =>{
     }
 
     const validate = (e) =>{
+        // This function validates the form entries
+        // Below method stops page from reloading
         e.preventDefault();
+
         var tar = e.target
         
+        // Checking if the id length is valid
         if (tar.id.value.length != 20){
             alert("Enter Correct Id")
         }else{ 
+            // Checking other non optional data 
             tar.name.value && tar.address.value && tar.height.value && tar.weight.value && tar.age.value?
                 updateData(e)
             : alert("Enter credentials")
@@ -47,6 +50,7 @@ export const AddForm = () =>{
     }
 
     const updateData = (e) =>{
+        // Updating the validated information in the {data} object
         data.id = e.target.id.value
         data.Address = e.target.address.value
         data.Age = e.target.age.value
@@ -57,12 +61,15 @@ export const AddForm = () =>{
         data.Disease = e.target.disease.value
         data.Condition = e.target.disease.value
 
+        // Sending the data
         sendData(data)
     }
 
     const sendData = async(data) =>{
+        // Wait until data is sent
         await addDoc(patientRef, data)
         alert("Data is Added to the System")
+        // Redirect to the Table Page
         navigate('/home')
     }
     
@@ -112,6 +119,7 @@ export const AddForm = () =>{
 }
 
 export const UpdateForm = () =>{
+    // Not required NOW
     return(
         <div>
             <form>Adada</form>
