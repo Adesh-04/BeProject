@@ -1,23 +1,43 @@
 import React from 'react';
-import { db } from './../../firebase'
+import { db, real } from './../../firebase'
 import {collection, getDocs} from 'firebase/firestore'
+import { getDatabase, ref, onValue } from "firebase/database";
 import { useEffect, useState } from 'react';
 
 export const Main = () => {
 
+    // Storing patient data locally
     const [patient, setPatient] = useState([])
+
+    // Reference to the patient_data collection in firestore database
     const patientRef = collection(db, 'patient_data')
 
+    // Reference to the Pulse reading from the real-time database
+    const pulseRef = ref(real, '/Pulse');
+    
+
     useEffect(()=>{
+        // This will run everytime page loads
 
         const getData = async() =>{
+            // Waits until all the patient data is fetched
             const data = await getDocs(patientRef);
+            // Stores the data locally
             setPatient(data.docs.map((doc) => ({
                 ...doc.data(), id: doc.id
             })))
         }
 
+        const getPulse = async() =>{
+            // Fetching the snapshot of the data from the reference
+            onValue(pulseRef, (snapshot) => {
+                // taking the value 
+                const data = snapshot.val();
+                console.log(data)
+        })}
+        // Calling both the functions
         getData();
+        getPulse();
     }, [])
 
 
@@ -69,10 +89,8 @@ export const Main = () => {
                         </thead>
 
                         <tbody className='tbody text-center'>
-
-                            {
-                                patient.map((item, i) =>(
-
+                            {/* Retriving patients data, Map function is used for simple loop */}
+                            {patient.map((item, i) =>(
                                     
                                         // console.log(item)
                                     
@@ -88,10 +106,7 @@ export const Main = () => {
                                          <td> <a href={ '/patient='+ item.id }   >link...</a></td>
                                     </tr>
                                 ) )
-                            }
-
-                            
-                            
+                            }                              
                         </tbody>
                     </table>
                 </div>  

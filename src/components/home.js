@@ -4,6 +4,7 @@ import iot from './../assets/images/iot.jpg';
 export const Home = () =>{
     return(
         <div >
+            {/* Homepage */}
             
 
             {/* <a className="btn btn-primary" href='/home' >Home</a> */}
