@@ -37,3 +37,46 @@ body{
     font-weight: 600;
 }
 
+
+
+.chatIcon img{
+    width: 50px;
+    position: fixed;
+    top: 90%;
+    left: 95%;
+    cursor: pointer;
+}
+.chat{
+    height: 55%;
+    width: 20%;
+    background-color: azure;
+    position: fixed;
+    top: 44%;
+    left: 79%;
+    display: flex;
+    flex-direction: column;
+}
+.topBar{
+    display: flex;
+    background-color: rgb(137, 250, 250);
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+.bottomBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+.bottomBar input{
+    width:92%;
+    margin-bottom:0;
+    padding:5px;
+    background-color:white;
+    border-radius: 5px;
+}
+.middle{
+    padding: 15px;
+    height: calc(100% - 60px);
+}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './../details.css';
 import { db } from './../../firebase';
 import {collection, getDocs} from 'firebase/firestore';
-import { Chat } from './../chat/chat'
+import Chat from '../chat/Chat'
 
 export const Details = (props) =>{
     let path = window.location.pathname
@@ -40,7 +40,8 @@ export const Details = (props) =>{
     return(
         <div>
             <a className='btn btn-secondary left-btn' href='/home'> Home </a>
-            <button className='btn btn-primary'>Chat</button>
+            {/* <button className='btn btn-primary'>Chat</button> */}
+            <Chat></Chat>
             <div className='wrapper-detail'>
 
                 <h1 className='mt-5 mb-4'> {patient.Name} </h1>
