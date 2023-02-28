@@ -80,3 +80,17 @@ body{
     padding: 15px;
     height: calc(100% - 60px);
 }
+.middleContainer p{
+    background-color: darkgrey;
+    padding: 5px;
+    max-width: max-content;
+    border-radius: 0 10px 10px 10px;
+}
+.middleContainer.patient{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.middleContainer.patient p{
+    background-color: rgb(168, 254, 168);
+    border-radius: 10px 0 10px 10px;
+}

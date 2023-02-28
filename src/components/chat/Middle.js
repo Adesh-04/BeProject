@@ -2,8 +2,8 @@ import React from 'react'
 
 function Middle() {
   return (
-    <div>
-        Messages
+    <div className='middleContainer patient'>
+        <p>mesage</p>
     </div>
   )
 }

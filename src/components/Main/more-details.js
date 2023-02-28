@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './../details.css';
 import { db } from './../../firebase';
 import {collection, getDocs} from 'firebase/firestore';
-import Chat from '../chat/Chat'
+import Chat from '../chat/chat.js'
 
 export const Details = (props) =>{
     // taking address path
