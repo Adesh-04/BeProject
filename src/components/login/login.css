@@ -1,22 +1,50 @@
-body{
-    background-color: rgb(215, 245, 255);
+:root {
+    --lightbg: rgb(190, 248, 229);
+    --formbg: rgb(240, 248, 255);
+    --btncol: rgb(19, 145, 255);
+}
+/* background-color: var(--lightbg);  */
 
-}
-.App {
-    text-align: center;
-}
-.header{
+
+
+
+.formContainer{
+    background-color: var(--lightbg);
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 15%;
 }
-.footer{
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
-    background-color: aliceblue;
+.formWrapper{
+    background-color: var(--formbg);
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 50vh;
+    border-radius: 10px;
 }
+.formWrapper form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formWrapper form input{
+    background-color: var(--formbg);
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(165, 172, 172);
+}
+.formWrapper form button{
+    background-color: var(--btncol);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+.heading{
+    color: var(--btncol);
+    font-weight:bold ;
+    font-size: 24px;
+}
+

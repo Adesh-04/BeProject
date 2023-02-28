@@ -1,4 +1,4 @@
-import './styles.css';
+import './login.css'
 import {v4 as uuid} from 'uuid'
 import { redirect, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect} from 'react';
@@ -83,33 +83,17 @@ export const Login = () => {
 
 
     return (
-        <div className="App ">
-            <br/><br/><br/>
-            <div className="row">
-                <div className="col-md-12">
-                    <form className='login-form' onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
-                        <h1> Login </h1><bt/>
-                        <fieldset>
-                    
-                            <label for="name">Username</label>
-                            <input type="text" id="username" name="username"/>
-                        
-                            <label for="password">Password</label>
-                            {/* Regex for simpler validation in pattern attribute */}
-                            <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  name="password"/>
-
-                            <button className='login-button' type="submit">Login</button>
-
-                        </fieldset>
-                        <fieldset>
-                            <p className='signup-text'>Don't Have an account 
-                                <button className="btn">
-                                    <a className='btn btn-primary' href='/signup'>Signup</a>
-                                </button>
-                            </p>
-                        </fieldset>
-                    </form>
-                </div>
+        <div className="formContainer">
+            <div className="formWrapper">
+                <span className="heading">Welcome</span>
+                <span className="heading">Login</span>
+                <form action="" onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
+                    <input type="text" placeholder='Username' id="username" name="username" />
+                    <input type="password" placeholder='Password' id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  name="password"/>
+                    <button type='submit'>Login</button>
+                </form>
+                <p>Don't have an account? <a href="/signup">Register</a> here</p>
+                
             </div>
         </div>
     )
@@ -216,32 +200,16 @@ export const Signup = () => {
     }
 
     return(
-        <div>
-            <div className="row">
-                <div className="col-md-12">
-
-                    <form className='signup-form' onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
-                        <h1> Signup </h1>
-                        
-                        <fieldset>
-
-                            <label htmlFor="username">Name:</label>
-                            <input type="text" id="username" name="username"/>
-                            
-                            <label htmlFor="name">Email:</label>
-                            <input type="email" id="email" name="email"/>
-
-                            <label htmlFor="name">Mobile Number:</label>
-                            <input type="text" id='number' name="number" pattern="[7-9]{1}[0-9]{9}"/>
-
-                            <label htmlFor="password">Password:</label>
-                            <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password"/>
-
-                            <button className='signup-button' type="submit">Sign In</button>
-
-                        </fieldset>
-                    </form>
-                </div>
+        <div className="formContainer">
+            <div className="formWrapper">
+                <span className="heading">Register</span>
+                <form action="" onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
+                    <input type="text" placeholder='Username' id="username" name="username" />
+                    <input type="email" placeholder='Enter email' id="email" name="email" />
+                    <input type="text" placeholder='Mobile number' id='number' name="number" pattern="[7-9]{1}[0-9]{9}" />
+                    <input type="password" placeholder='Password' id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  name="password"/>
+                    <button type='submit'>Sign Up</button>
+                </form>
             </div>
         </div>
     )
