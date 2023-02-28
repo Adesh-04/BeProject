@@ -48,107 +48,184 @@ export const Details = (props) =>{
 
 
     return(
-        <div>
-            <a className='btn btn-secondary left-btn' href='/home'> Home </a>
-            {/* <button className='btn btn-primary'>Chat</button> */}
-            <Chat></Chat>
-            <div className='wrapper-detail'>
+        // <div>
+        //     <a className='btn btn-secondary left-btn' href='/home'> Home </a>
+        //     <Chat></Chat>
+        //     <div className='wrapper-detail'>
 
-                <h1 className='mt-5 mb-4'> {patient.Name} </h1>
-                <div className='wrapper'>
-                    <div>
-                        <p className='btn info-btn mt-4'>Address :  {patient.Address} </p>
-                    </div>
-                    <div className="mt-4" id='Info'>
+        //         <h1 className='mt-5 mb-4'> {patient.Name} </h1>
+        //         <div className='wrapper'>
+        //             <div>
+        //                 <p className='btn info-btn mt-4'>Address :  {patient.Address} </p>
+        //             </div>
+        //             <div className="mt-4" id='Info'>
                         
-                        <p className='btn info-btn'>Age :  {patient.Age} </p>
-                        <p className='btn info-btn'>Gender :  {patient.Gender} </p>
-                        <p className='btn info-btn'>Height :  {patient.Height} </p>
-                        <p className='btn info-btn'>Weight :  {patient.Weight} </p>
-                        <p className='btn info-btn'>Blood Group :  {patient.Blood_G} </p>
-                        <p className='btn info-btn'>BP :  {patient.BP} </p>
-                        <p className='btn info-btn'>Pulse :  {patient.Pulse} </p>
-                        <p className='btn info-btn'>Disease :  {patient.Disease} </p>
-                        <p className='btn info-btn'>Condition :  {patient.Condition} </p>
+        //                 <p className='btn info-btn'>Age :  {patient.Age} </p>
+        //                 <p className='btn info-btn'>Gender :  {patient.Gender} </p>
+        //                 <p className='btn info-btn'>Height :  {patient.Height} </p>
+        //                 <p className='btn info-btn'>Weight :  {patient.Weight} </p>
+        //                 <p className='btn info-btn'>Blood Group :  {patient.Blood_G} </p>
+        //                 <p className='btn info-btn'>BP :  {patient.BP} </p>
+        //                 <p className='btn info-btn'>Pulse :  {patient.Pulse} </p>
+        //                 <p className='btn info-btn'>Disease :  {patient.Disease} </p>
+        //                 <p className='btn info-btn'>Condition :  {patient.Condition} </p>
 
-                    </div>
-                </div>
-                <div className='more-info'>
-                    <div className='past-info m-3'>
-                        <h2> Symptoms </h2>
-                        <ol>
+        //             </div>
+        //         </div>
+        //         <div className='more-info'>
+        //             <div className='past-info m-3'>
+        //                 <h2> Symptoms </h2>
+        //                 <ol>
 
-                        { 
-                        // Cheking if Symptom list is not valid i.e 0  same applies to all other
-                        Symp ?
-                            // Mapping all the Symptoms in <li> tag same applies to all other
-                            Object.keys(patient.Sympt).map( (item, i) =>(
-                                <li key={i}>{patient.Sympt[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
+        //                 { 
+        //                 // Cheking if Symptom list is not valid i.e 0  same applies to all other
+        //                 Symp ?
+        //                     // Mapping all the Symptoms in <li> tag same applies to all other
+        //                     Object.keys(patient.Sympt).map( (item, i) =>(
+        //                         <li key={i}>{patient.Sympt[item]}</li>
+        //                     ) )
+        //                     : console.log('Not Reachable')
                             
-                        }
-                        </ol>
+        //                 }
+        //                 </ol>
                         
-                    </div>
+        //             </div>
  
-                    <div className='past-info m-3'>
-                        <h2> Current Medications </h2>
-                        <ol>
-                        {
-                            Curr ?
-                            Object.keys(patient.Curr_Med).map( (item, i) =>(
-                                <li key={i}>{patient.Curr_Med[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
-                        </ol>
-                    </div>
+        //             <div className='past-info m-3'>
+        //                 <h2> Current Medications </h2>
+        //                 <ol>
+        //                 {
+        //                     Curr ?
+        //                     Object.keys(patient.Curr_Med).map( (item, i) =>(
+        //                         <li key={i}>{patient.Curr_Med[item]}</li>
+        //                     ) )
+        //                     : console.log('Not Reachable')
+        //                 }
+        //                 </ol>
+        //             </div>
                     
-                    <div className='past-info m-3'>
-                        <h2> Past Medications </h2>
-                        <ol>
-                        {
-                            Past ?
-                            Object.keys(patient.Past_Med).map( (item, i) =>(
-                                <li key={i}>{patient.Past_Med[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
-                        </ol>
-                    </div>
+        //             <div className='past-info m-3'>
+        //                 <h2> Past Medications </h2>
+        //                 <ol>
+        //                 {
+        //                     Past ?
+        //                     Object.keys(patient.Past_Med).map( (item, i) =>(
+        //                         <li key={i}>{patient.Past_Med[item]}</li>
+        //                     ) )
+        //                     : console.log('Not Reachable')
+        //                 }
+        //                 </ol>
+        //             </div>
 
-                    <div className='past-info m-3'>
-                        <h2> Genetic or Heredetory Diseases </h2>
-                        <ol>
-                        {
-                            Gen ?
-                            Object.keys(patient.Gen_D).map( (item, i) =>(
-                                <li key={i}>{patient.Gen_D[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
-                        </ol>
-                    </div>
+        //             <div className='past-info m-3'>
+        //                 <h2> Genetic or Heredetory Diseases </h2>
+        //                 <ol>
+        //                 {
+        //                     Gen ?
+        //                     Object.keys(patient.Gen_D).map( (item, i) =>(
+        //                         <li key={i}>{patient.Gen_D[item]}</li>
+        //                     ) )
+        //                     : console.log('Not Reachable')
+        //                 }
+        //                 </ol>
+        //             </div>
                     
-                    <div className='past-info m-3'>
-                        <h2> Allergies </h2>
-                        <ol>
-                        {
-                            Alle ?
-                            Object.keys(patient.Allergy).map( (item, i) =>(
-                                <li key={i}>{patient.Allergy[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
-                        </ol>
-                    </div>
-                </div>    
+        //             <div className='past-info m-3'>
+        //                 <h2> Allergies </h2>
+        //                 <ol>
+        //                 {
+        //                     Alle ?
+        //                     Object.keys(patient.Allergy).map( (item, i) =>(
+        //                         <li key={i}>{patient.Allergy[item]}</li>
+        //                     ) )
+        //                     : console.log('Not Reachable')
+        //                 }
+        //                 </ol>
+        //             </div>
+        //         </div>    
 
                 
 
-            </div>
+        //     </div>
             
+        // </div>
+        <div>
+            <h1>{patient.Name}</h1>
+            <div className="Container" id='style-3'>
+                {/* <a className='btn btn-secondary left-btn' href='/home'> Home </a> */}
+                <Chat></Chat>
+                <div className="patient-details">
+                    <p><b>Age             :</b>  {patient.Age} </p>
+                    <p><b>Address         :</b>  {patient.Address} </p>
+                    <p><b>Gender          :</b>  {patient.Gender} </p>
+                    <p><b>Height          :</b>  {patient.Height} </p>
+                    <p><b>Weight          :</b>  {patient.Weight} </p>
+                    <p><b>Blood Group</b> :  {patient.Blood_G} </p>
+                    <p><b>BP              :</b>  {patient.BP} </p>
+                    <p><b>Pulse           :</b>  {patient.Pulse} </p>
+                    <p><b>Disease         :</b>  {patient.Disease} </p>
+                    <p><b>Condition       :</b>  {patient.Condition} </p>
+                </div>
+                <div className="patient-details-more">
+                    <ul>
+                        <li><span className='li-style'>Symptoms</span>
+                        <ol>
+                         {
+                             Curr ?
+                             Object.keys(patient.Curr_Med).map( (item, i) =>(
+                                 <li key={i}>{patient.Curr_Med[item]}</li>
+                             ) )
+                             : console.log('Not Reachable')
+                         }
+                         </ol>
+                        </li>
+                        <li><span className='li-style'>Current Medications</span>
+                        <ol>
+                         {
+                             Curr ?
+                             Object.keys(patient.Curr_Med).map( (item, i) =>(
+                                 <li key={i}>{patient.Curr_Med[item]}</li>
+                             ) )
+                             : console.log('Not Reachable')
+                         }
+                         </ol>
+                        </li>
+                        <li><span className='li-style'>Past Medications</span>
+                        <ol>
+                         {
+                             Past ?
+                             Object.keys(patient.Past_Med).map( (item, i) =>(
+                                 <li key={i}>{patient.Past_Med[item]}</li>
+                             ) )
+                             : console.log('Not Reachable')
+                         }
+                         </ol>
+                        </li>
+                        <li><span className='li-style'>Genetic or Heredetory Diseases</span>
+                        <ol>
+                         {
+                             Gen ?
+                             Object.keys(patient.Gen_D).map( (item, i) =>(
+                                 <li key={i}>{patient.Gen_D[item]}</li>
+                             ) )
+                             : console.log('Not Reachable')
+                         }
+                         </ol>
+                        </li>
+                        <li><span className='li-style'>Allergies</span>
+                        <ol>
+                         {
+                             Alle ?
+                             Object.keys(patient.Allergy).map( (item, i) =>(
+                                 <li key={i}>{patient.Allergy[item]}</li>
+                             ) )
+                             : console.log('Not Reachable')
+                         }
+                         </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }

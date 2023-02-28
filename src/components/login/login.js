@@ -87,13 +87,12 @@ export const Login = () => {
             <div className="formWrapper">
                 <span className="heading">Welcome</span>
                 <span className="heading">Login</span>
-                <form action="" onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
+                <form onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
                     <input type="text" placeholder='Username' id="username" name="username" />
                     <input type="password" placeholder='Password' id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  name="password"/>
                     <button type='submit'>Login</button>
                 </form>
                 <p>Don't have an account? <a href="/signup">Register</a> here</p>
-                
             </div>
         </div>
     )

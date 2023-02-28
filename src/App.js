@@ -4,11 +4,10 @@ import 'bootstrap/dist/js/bootstrap';
 import './App.css'
 import { Home } from './components/home';
 import { Login, Signup} from './components/login/login'
-import { AddForm} from './components/Main/form'
+import { AddForm } from './components/Main/form'
 import { Main } from './components/Main/main';
 import { Details } from './components/Main/more-details';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
 
 function App() {
 

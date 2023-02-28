@@ -74,46 +74,63 @@ export const AddForm = () =>{
     }
     
     return(
-        <div>
+        // <div>
 
-            <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Home </a> </button>
-            <h3 className='m-3'>Add Patient Data</h3> 
-            <form className='form mt-5' onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
-                <div className='main'>
-                    <fieldset>
-                        <label htmlFor='id'> Device Id  :  </label>
-                        <input type="text" id='id' pattern="^[a-z0-9]{20}$" title='Id is Invalid' name="id" /> 
+        //     <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Home </a> </button>
+        //     <h3 className='m-3'>Add Patient Data</h3> 
+        //     <form className='form mt-5' onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
+        //         <div className='main'>
+        //             <fieldset>
+        //                 <label htmlFor='id'> Device Id  :  </label>
+        //                 <input type="text" id='id' pattern="^[a-z0-9]{20}$" title='Id is Invalid' name="id" /> 
                         
-                        <label htmlFor='name'> Name  :  </label>
-                        <input type="text" name="name" />
+        //                 <label htmlFor='name'> Name  :  </label>
+        //                 <input type="text" name="name" />
                         
-                        <label htmlFor='address'> Address  :  </label>
-                        <input type="text" name="address" />
+        //                 <label htmlFor='address'> Address  :  </label>
+        //                 <input type="text" name="address" />
 
-                        <label htmlFor='age'> Age  :  </label>
-                        <input type="text" name="age" />
-                    </fieldset>
-                    <fieldset>                    
-                        <label htmlFor='height'> Height  :  </label>
-                        <input type="text" name="height" />                        
+        //                 <label htmlFor='age'> Age  :  </label>
+        //                 <input type="text" name="age" />
+        //             </fieldset>
+        //             <fieldset>                    
+        //                 <label htmlFor='height'> Height  :  </label>
+        //                 <input type="text" name="height" />                        
 
-                        <label htmlFor='weight'> Weight  :  </label>
-                        <input type="text" name="weight" />                        
+        //                 <label htmlFor='weight'> Weight  :  </label>
+        //                 <input type="text" name="weight" />                        
 
-                        <label htmlFor='blood'> Blood Group  :  </label>
-                        <input type="text" name="blood" />                        
+        //                 <label htmlFor='blood'> Blood Group  :  </label>
+        //                 <input type="text" name="blood" />                        
                         
-                        <label htmlFor='disease'> Disease  :  </label>
-                        <input type="text" name="disease" />                        
+        //                 <label htmlFor='disease'> Disease  :  </label>
+        //                 <input type="text" name="disease" />                        
 
-                        <label htmlFor='condition'> Condition  :  </label>
-                        <input type="text" name="condition" />                   
-                    </fieldset>
-                </div>
+        //                 <label htmlFor='condition'> Condition  :  </label>
+        //                 <input type="text" name="condition" />                   
+        //             </fieldset>
+        //         </div>
                 
-                <button type="submit" className="mt-2 btn btn-success btn-sm">Add</button>
+        //         <button type="submit" className="mt-2 btn btn-success btn-sm">Add</button>
 
-            </form>
+        //     </form>
+        // </div>
+        <div className="formContainer">
+            <div className="formWrapper">
+                <span className="heading">Add Patient</span>
+                <form action="">
+                    <input type="text" placeholder='Device ID' id='id' pattern="^[a-z0-9]{20}$" title='Id is Invalid' name="id" />
+                    <input type="text" placeholder= 'Patient Name' name="name" />
+                    <input type="text" placeholder= 'Address' name="address" />
+                    <input type="text" placeholder= 'Age' name="age" />
+                    <input type="text" placeholder= 'Height' name="age" />
+                    <input type="text" placeholder= 'Weight' name="weight" />
+                    <input type="text" placeholder= 'Blood Group' name="blood" />
+                    <input type="text" placeholder= 'Disease' name="disease" />
+                    <input type="text" placeholder= 'Condition' name="condition" />
+                    <button type='submit'>Add</button>
+                </form>
+            </div>
         </div>
     )
 }
@@ -121,8 +138,10 @@ export const AddForm = () =>{
 export const UpdateForm = () =>{
     // Not required NOW
     return(
-        <div>
-            <form>Adada</form>
+        <div className='formContainer'>
+            <div className="formWrapper">
+                <form>Adada</form>
+            </div>
         </div>
     )
 }

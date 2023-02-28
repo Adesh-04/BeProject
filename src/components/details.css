@@ -1,8 +1,29 @@
+:root {
+    --lightbg: rgb(190, 248, 229);
+    --formbg: rgb(240, 248, 255);
+    --btncol: rgb(19, 145, 255);
+    --lg:rgb(130, 126, 126);
+}
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--lg);
+}
 
 body{
-    background-color: #e5e5f7;
+    background-color: var(--lightbg);
     opacity: 0.8;
-    background-image:  radial-gradient(#282a43 0.5px, transparent 0.5px), radial-gradient(#282a43 0.5px, #e5e5f7 0.5px);
     background-size: 20px 20px;
     background-position: 0 0,10px 10px;
 }
@@ -93,4 +114,29 @@ body{
 .middleContainer.patient p{
     background-color: rgb(168, 254, 168);
     border-radius: 10px 0 10px 10px;
+}
+
+.Container{
+    background-color: var(--lightbg);
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 70px;
+    background-color: var(--formbg);
+    border-radius: 15px;
+}
+.patient-details{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    justify-content: center;
+    border-right: 1px solid;
+}
+.patient-details-more{
+    width: 70%;
+}
+.li-style{
+    font-weight: 800;
 }

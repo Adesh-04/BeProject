@@ -4,3 +4,44 @@
     row-gap: 1em;
 }
 
+.formContainer{
+    background-color: var(--lightbg);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formWrapper{
+    background-color: var(--formbg);
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 50vh;
+    border-radius: 10px;
+}
+.formWrapper form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formWrapper form input{
+    background-color: var(--formbg);
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(165, 172, 172);
+}
+.formWrapper form button{
+    background-color: var(--btncol);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+.heading{
+    color: var(--btncol);
+    font-weight:bold ;
+    font-size: 24px;
+}
+
+

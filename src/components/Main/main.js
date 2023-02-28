@@ -1,4 +1,5 @@
 import React from 'react';
+import icon from './../../assets/images/top-up.png'
 import { db, real } from './../../firebase'
 import {collection, getDocs} from 'firebase/firestore'
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -103,7 +104,7 @@ export const Main = () => {
                                          <td> {item.Pulse} </td>
                                          <td> {item.Disease ? item.Disease : 'None'} </td>
                                          <td> {item.Condition ? item.Condition : 'None'} </td>
-                                         <td> <a href={ '/patient='+ item.id }   >link...</a></td>
+                                         <td> <a href={ '/patient='+ item.id }><img className='img-icon' src={icon}/></a></td>
                                     </tr>
                                 ) )
                             }                              

@@ -1,3 +1,13 @@
+:root {
+    --lightbg: rgb(190, 248, 229);
+    --formbg: rgb(240, 248, 255);
+    --btncol: rgb(19, 145, 255);
+}
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
 .App{
     width: 100%;
     text-align: center;
@@ -8,7 +18,7 @@
 }
 
 .Wrapper-page{
-    background-color: Beige;
+    background-color: var(--lightbg);
     width : 100%;
     min-height : 100vh;
 }
@@ -41,4 +51,8 @@
     padding: 1.25em 1em;
     background-color: White;
     border-radius: 10px;
+}
+
+.img-icon{
+    width:25px;
 }
