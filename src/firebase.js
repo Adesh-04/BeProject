@@ -25,32 +25,6 @@ export const db= getFirestore(storeApp);
 export const real = getDatabase(storeApp);
 
 
-// const collRef = collection(db, 'patient_data');
-
-// const loginRef = collection(db, 'login');
-
-
-
-
-// getDocs(loginRef).then((snapshot) =>{
-//     var login = []
-//     snapshot.docs.forEach((doc) => {
-//         login.push({ ...doc.data(), id: doc.id})
-//     })
-//     // console.log(login)
-// }).catch(err => {
-//     console.log(err.message);
-// })
-
-// const data2 = getDocs(collRef).then((snapshot) => {
-//     var patient = []
-//     snapshot.docs.forEach((doc) => {
-//         patient.push({ ...doc.data(), id: doc.id })
-//     })
-//     // console.log(patient)
-// }).catch(err => {
-//     console.log(err.message);
-// })
 
 
 

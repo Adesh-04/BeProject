@@ -63,6 +63,7 @@ export const AddForm = () =>{
 
         // Sending the data
         sendData(data)
+        console.log('Ok')
     }
 
     const sendData = async(data) =>{
@@ -118,13 +119,13 @@ export const AddForm = () =>{
         <div className="formContainer">
             <div className="formWrapper">
                 <span className="heading">Add Patient</span>
-                <form action="">
+                <form action="" onSubmit={(e)=>{validate(e)}} autoComplete={'off'}>
                     <input type="text" placeholder='Device ID' id='id' pattern="^[a-z0-9]{20}$" title='Id is Invalid' name="id" />
                     <input type="text" placeholder= 'Patient Name' name="name" />
                     <input type="text" placeholder= 'Address' name="address" />
                     <input type="text" placeholder= 'Age' name="age" />
-                    <input type="text" placeholder= 'Height' name="age" />
-                    <input type="text" placeholder= 'Weight' name="weight" />
+                    <input type="text" placeholder= 'Height in cms' name="height" />
+                    <input type="text" placeholder= 'Weight in kg' name="weight" />
                     <input type="text" placeholder= 'Blood Group' name="blood" />
                     <input type="text" placeholder= 'Disease' name="disease" />
                     <input type="text" placeholder= 'Condition' name="condition" />
