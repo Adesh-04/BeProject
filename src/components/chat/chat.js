@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Bottom from './Bottom.js'
 import Middle from './Middle.js'
 import './../details.css'
@@ -10,8 +11,8 @@ import send from './../../assets/images/send-message.png'
 
 function Chat() {
     const [showVal, showBox1] = useState('none')
+    const navigate = useNavigate()
 
-    
     function showBox(){
         if(showVal=='block'){
             showBox1('none');
@@ -33,7 +34,7 @@ function Chat() {
   return (
     <div className="">
         <div className='chatIcon'>
-            <img src={chaticon} onClick={showBox} alt="" />
+            <a href="https://api.whatsapp.com/send?phone=9860828432" target="_blank" rel="noopener noreferrer" ><img src={chaticon}  alt="chat" /></a>
         </div>
         <div className="chatBox">
             <div className="chat" style={{display:showVal}}>

@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './form.css'
 import { v4 as uuid } from 'uuid'
 import { db } from './../../firebase';
-import { collection, getDocs, addDocs, addDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -17,7 +17,7 @@ export const AddForm = () =>{
     console.log(id)
 
     // Reference to the patient_data collection in firestore database
-    const patientRef = collection(db, "patient_data")
+    // const patientRef = collection(db, "patient_data")
 
     var data = {
         // This is the skeleton for the data document which will be sent over to database
@@ -68,7 +68,7 @@ export const AddForm = () =>{
 
     const sendData = async(data) =>{
         // Wait until data is sent
-        await addDoc(patientRef, data)
+        await setDoc(doc(db, "patient_data", data.id),data)
         alert("Data is Added to the System")
         // Redirect to the Table Page
         navigate('/home')

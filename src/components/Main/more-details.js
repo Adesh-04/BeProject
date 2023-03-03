@@ -16,7 +16,7 @@ export const Details = (props) =>{
     
     // Storing the patient data
     const [patient, setPatient] = useState([])
-    const [error, setError] = useState(true)
+    const [temp, setTemp] = useState(0)
 
     // Reference for the patient_data in the database
     const patientRef = collection(db, 'patient_data')
@@ -33,21 +33,20 @@ export const Details = (props) =>{
                 ...doc.data(), id : doc.id
             })))
         }
+        onValue(TempRef, (snapshot) => {
+            setTemp(snapshot.val());
+        });
         // Calling the function
         getData();
     }, [])
 
     // Verifing if patient id exists in the {patient} list
     for (var item in patient){
-        if (patient[item].id == ID){
+        if (patient[item].id === ID){
             setPatient(patient[item])
-            setError(false)
         }        
     }
-    console.log(error)
-    if (error === true){
-        navigate('/error')
-    }
+    
 
     // Variables for all list type data
     const Symp = patient.Sympt
@@ -57,16 +56,12 @@ export const Details = (props) =>{
     const Alle = patient.Allergy
     var Pulse
     var O2
-    var Temp
 
     // creating reference to the realtime database only if patient id exists
-    const PulseRef = ref(real, 'users/' + ID + 'Pulse/' );
-    const O2Ref = ref(real, 'users/' + ID + 'SpO2/' );
-    const TempRef = ref(real, 'users/' + ID + 'Temp/' );
-    onValue(PulseRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
-    });
+    const PulseRef = ref(real, 'users/' + ID + '/Pulse/' );
+    const O2Ref = ref(real, 'users/' + ID + '/SpO2/' );
+    const TempRef = ref(real, 'users/' + ID + '/Temp/' );
+    
 
 
     return(
@@ -84,7 +79,7 @@ export const Details = (props) =>{
                     <p><b>Blood Group</b> :  {patient.Blood_G} </p>
                     <p><b>Pulse           :</b>  {Pulse} </p>
                     <p><b>Oxygen          :</b>  {O2} </p>
-                    <p><b>Temperature     :</b>  {Temp}</p>
+                    <p><b>Temperature     :</b>  {temp}</p>
                     <p><b>Disease         :</b>  {patient.Disease} </p>
                     <p><b>Condition       :</b>  {patient.Condition} </p>
                 </div>
