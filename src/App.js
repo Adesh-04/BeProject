@@ -9,6 +9,7 @@ import { Main } from './components/Main/main';
 import { Error } from './components/Main/error';
 import { Details } from './components/Main/more-details';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import PrivateRoutes from './utils/PrivateRoutes';
 
 function App() {
 
@@ -16,14 +17,25 @@ function App() {
     <div className="App ">
       <Router>
           <Routes>
-            <Route exact path="/" element={<Home/>}/>
             <Route exact path="/form" element={<Login/>}/>
             <Route exact path="/signup" element={<Signup/>}/>
+            <Route element={<PrivateRoutes/>}>
+              <Route exact path="/" element={<Home/>}/>
+              <Route exact path="/add" element={<AddForm/>}/>
+              <Route exact path="/home" element={<Main/>}/>
+              <Route exact path="/error" element={<Error/>}/>
+              <Route path={'/patient=:userId'} element={<Details  />}/>
+            </Route>
+          </Routes>
+          {/* <Routes>
+            <Route exact path="/form" element={<Login/>}/>
+            <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path="/" element={<Home/>}/>
             <Route exact path="/add" element={<AddForm/>}/>
             <Route exact path="/home" element={<Main/>}/>
             <Route exact path="/error" element={<Error/>}/>
             <Route exact path={'/patient=:userId'} element={<Details  />}/>
-          </Routes>
+          </Routes> */}
       </Router>
 
 

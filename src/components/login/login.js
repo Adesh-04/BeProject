@@ -5,6 +5,7 @@ import React, { useState, useEffect} from 'react';
 // db is the instance taken from firebase.js config file
 import { db } from './../../firebase';
 import {collection, getDocs, addDoc} from 'firebase/firestore'
+import { Cookies } from 'react-cookie';
 
 
 export const Login = () => {
@@ -36,7 +37,9 @@ export const Login = () => {
         getData();
 
     }, [])
-
+    function printCookie(ckie){
+        console.log(ckie)
+    }
     const validate = (e) =>{
         // This function will validate the entries from the form
 
@@ -72,7 +75,11 @@ export const Login = () => {
 
             // Checking the password
             if (login[count].password == pwd){
+                const cookie = new Cookies();
+                cookie.set('loginToken', true, { path: '/' });
+                console.log("cookie created and login token = "+cookie.get('loginToken')); 
                 navigate('/home')
+                printCookie(cookie);
             }else{
                 alert("Invalid Credentials")
             }
