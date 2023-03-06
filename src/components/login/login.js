@@ -1,11 +1,11 @@
 import './login.css'
 import {v4 as uuid} from 'uuid'
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import React, { useState, useEffect} from 'react';
 // db is the instance taken from firebase.js config file
 import { db } from './../../firebase';
 import {collection, getDocs, addDoc} from 'firebase/firestore'
-import { Cookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 
 export const Login = () => {
@@ -37,9 +37,6 @@ export const Login = () => {
         getData();
 
     }, [])
-    function printCookie(ckie){
-        console.log(ckie)
-    }
     const validate = (e) =>{
         // This function will validate the entries from the form
 
@@ -79,7 +76,6 @@ export const Login = () => {
                 cookie.set('loginToken', true, { path: '/' });
                 console.log("cookie created and login token = "+cookie.get('loginToken')); 
                 navigate('/home')
-                printCookie(cookie);
             }else{
                 alert("Invalid Credentials")
             }

@@ -19,11 +19,11 @@ function App() {
           <Routes>
             <Route exact path="/form" element={<Login/>}/>
             <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/error" element={<Error/>}/>
             <Route element={<PrivateRoutes/>}>
-              <Route exact path="/" element={<Home/>}/>
               <Route exact path="/add" element={<AddForm/>}/>
               <Route exact path="/home" element={<Main/>}/>
-              <Route exact path="/error" element={<Error/>}/>
               <Route path={'/patient=:userId'} element={<Details  />}/>
             </Route>
           </Routes>
