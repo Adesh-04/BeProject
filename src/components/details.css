@@ -120,7 +120,6 @@ body{
     background-color: var(--lightbg);
     height: 90vh;
     display: flex;
-    align-items: center;
     justify-content: center;
     margin: 70px;
     background-color: var(--formbg);
@@ -133,9 +132,15 @@ body{
     height: inherit;
     justify-content: center;
     border-right: 1px solid;
+    position: sticky;
 }
 .patient-details-more{
     width: 70%;
+    overflow-y: scroll;
+}
+.patient-details-more ul{
+    list-style: none;
+
 }
 .li-style{
     font-weight: 800;
