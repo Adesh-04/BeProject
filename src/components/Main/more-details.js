@@ -1,31 +1,30 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './../details.css';
 import { db } from './../../firebase';
-import {collection, getDocs} from 'firebase/firestore';
-import { Chat } from './../chat/chat'
+import { collection, getDocs } from 'firebase/firestore';
 
-export const Details = (props) =>{
+export const Details = (props) => {
     // taking address path
     let path = window.location.pathname
     const arr = path.split('=')
-    const ID = arr[1]    
-    
+    const ID = arr[1]
+
     // Storing the patient data
     const [patient, setPatient] = useState([])
 
     // Reference for the patient_data in the database
     const patientRef = collection(db, 'patient_data')
 
-    useEffect(()=>{
+    useEffect(() => {
         // This will run everytime the page loads
 
-        const getData = async() =>{
+        const getData = async () => {
             // Wait until the data is retreived
             const data = await getDocs(patientRef);
 
             // Storing the data locally
             setPatient(data.docs.map((doc) => ({
-                ...doc.data(), id : doc.id
+                ...doc.data(), id: doc.id
             })))
         }
         // Calling the function
@@ -33,8 +32,8 @@ export const Details = (props) =>{
     }, [])
 
     // Verifing if patient id exists in the {patient} list
-    for (var item in patient){
-        if (patient[item].id == ID){
+    for (var item in patient) {
+        if (patient[item].id === ID) {
             setPatient(patient[item])
         }
     }
@@ -47,7 +46,7 @@ export const Details = (props) =>{
     const Alle = patient.Allergy
 
 
-    return(
+    return (
         <div>
             <a className='btn btn-secondary left-btn' href='/home'> Home </a>
             <button className='btn btn-primary'>Chat</button>
@@ -59,7 +58,7 @@ export const Details = (props) =>{
                         <p className='btn info-btn mt-4'>Address :  {patient.Address} </p>
                     </div>
                     <div className="mt-4" id='Info'>
-                        
+
                         <p className='btn info-btn'>Age :  {patient.Age} </p>
                         <p className='btn info-btn'>Gender :  {patient.Gender} </p>
                         <p className='btn info-btn'>Height :  {patient.Height} </p>
@@ -77,77 +76,77 @@ export const Details = (props) =>{
                         <h2> Symptoms </h2>
                         <ol>
 
-                        { 
-                        // Cheking if Symptom list is not valid i.e 0  same applies to all other
-                        Symp ?
-                            // Mapping all the Symptoms in <li> tag same applies to all other
-                            Object.keys(patient.Sympt).map( (item, i) =>(
-                                <li key={i}>{patient.Sympt[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                            
-                        }
+                            {
+                                // Cheking if Symptom list is not valid i.e 0  same applies to all other
+                                Symp ?
+                                    // Mapping all the Symptoms in <li> tag same applies to all other
+                                    Object.keys(patient.Sympt).map((item, i) => (
+                                        <li key={i}>{patient.Sympt[item]}</li>
+                                    ))
+                                    : console.log('Not Reachable')
+
+                            }
                         </ol>
-                        
+
                     </div>
- 
+
                     <div className='past-info m-3'>
                         <h2> Current Medications </h2>
                         <ol>
-                        {
-                            Curr ?
-                            Object.keys(patient.Curr_Med).map( (item, i) =>(
-                                <li key={i}>{patient.Curr_Med[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
+                            {
+                                Curr ?
+                                    Object.keys(patient.Curr_Med).map((item, i) => (
+                                        <li key={i}>{patient.Curr_Med[item]}</li>
+                                    ))
+                                    : console.log('Not Reachable')
+                            }
                         </ol>
                     </div>
-                    
+
                     <div className='past-info m-3'>
                         <h2> Past Medications </h2>
                         <ol>
-                        {
-                            Past ?
-                            Object.keys(patient.Past_Med).map( (item, i) =>(
-                                <li key={i}>{patient.Past_Med[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
+                            {
+                                Past ?
+                                    Object.keys(patient.Past_Med).map((item, i) => (
+                                        <li key={i}>{patient.Past_Med[item]}</li>
+                                    ))
+                                    : console.log('Not Reachable')
+                            }
                         </ol>
                     </div>
 
                     <div className='past-info m-3'>
                         <h2> Genetic or Heredetory Diseases </h2>
                         <ol>
-                        {
-                            Gen ?
-                            Object.keys(patient.Gen_D).map( (item, i) =>(
-                                <li key={i}>{patient.Gen_D[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
+                            {
+                                Gen ?
+                                    Object.keys(patient.Gen_D).map((item, i) => (
+                                        <li key={i}>{patient.Gen_D[item]}</li>
+                                    ))
+                                    : console.log('Not Reachable')
+                            }
                         </ol>
                     </div>
-                    
+
                     <div className='past-info m-3'>
                         <h2> Allergies </h2>
                         <ol>
-                        {
-                            Alle ?
-                            Object.keys(patient.Allergy).map( (item, i) =>(
-                                <li key={i}>{patient.Allergy[item]}</li>
-                            ) )
-                            : console.log('Not Reachable')
-                        }
+                            {
+                                Alle ?
+                                    Object.keys(patient.Allergy).map((item, i) => (
+                                        <li key={i}>{patient.Allergy[item]}</li>
+                                    ))
+                                    : console.log('Not Reachable')
+                            }
                         </ol>
                     </div>
-                </div>    
+                </div>
 
-                
+
 
             </div>
-            
+
         </div>
     )
 }

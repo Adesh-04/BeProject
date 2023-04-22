@@ -1,7 +1,7 @@
 import React from 'react';
 import { db, real } from './../../firebase'
-import {collection, getDocs} from 'firebase/firestore'
-import { getDatabase, ref, onValue } from "firebase/database";
+import { collection, getDocs } from 'firebase/firestore'
+import { ref, onValue } from "firebase/database";
 import { useEffect, useState } from 'react';
 
 export const Main = () => {
@@ -14,12 +14,12 @@ export const Main = () => {
 
     // Reference to the Pulse reading from the real-time database
     const pulseRef = ref(real, '/Pulse');
-    
 
-    useEffect(()=>{
+
+    useEffect(() => {
         // This will run everytime page loads
 
-        const getData = async() =>{
+        const getData = async () => {
             // Waits until all the patient data is fetched
             const data = await getDocs(patientRef);
             // Stores the data locally
@@ -28,13 +28,14 @@ export const Main = () => {
             })))
         }
 
-        const getPulse = async() =>{
+        const getPulse = async () => {
             // Fetching the snapshot of the data from the reference
             onValue(pulseRef, (snapshot) => {
                 // taking the value 
                 const data = snapshot.val();
                 console.log(data)
-        })}
+            })
+        }
         // Calling both the functions
         getData();
         getPulse();
@@ -45,12 +46,12 @@ export const Main = () => {
         <div className='Wrapper-page'>
             <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Home </a> </button>
 
-            
+
 
             {/* NAVBAR */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">City Hospital</a>
+                    <a className="navbar-brand" href="/">City Hospital</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -60,16 +61,16 @@ export const Main = () => {
                                 <a className="nav-link active" aria-current="page" href="/add">Add New Patient</a>
                             </li>
                         </ul>
-                        
+
                     </div>
                 </div>
             </nav>
 
             <div className=' Header py-3'>
-                
+
                 <p className='text-center h1 mt-3' > Health Monitoring System  </p>
             </div>
-            
+
             <div className='Main mt-2'>
 
                 <div className='Content '>
@@ -90,26 +91,26 @@ export const Main = () => {
 
                         <tbody className='tbody text-center'>
                             {/* Retriving patients data, Map function is used for simple loop */}
-                            {patient.map((item, i) =>(
-                                    
-                                        // console.log(item)
-                                    
-                                    <tr key = {item.id}> 
-                                        <td> {i+1} </td>
-                                         <td> {item.Name} </td>
-                                         <td> {item.Address} </td>
-                                         <td> {item.Age} </td>
-                                         <td> {item.BP } </td>
-                                         <td> {item.Pulse} </td>
-                                         <td> {item.Disease ? item.Disease : 'None'} </td>
-                                         <td> {item.Condition ? item.Condition : 'None'} </td>
-                                         <td> <a href={ '/patient='+ item.id }   >link...</a></td>
-                                    </tr>
-                                ) )
-                            }                              
+                            {patient.map((item, i) => (
+
+                                // console.log(item)
+
+                                <tr key={item.id}>
+                                    <td> {i + 1} </td>
+                                    <td> {item.Name} </td>
+                                    <td> {item.Address} </td>
+                                    <td> {item.Age} </td>
+                                    <td> {item.BP} </td>
+                                    <td> {item.Pulse} </td>
+                                    <td> {item.Disease ? item.Disease : 'None'} </td>
+                                    <td> {item.Condition ? item.Condition : 'None'} </td>
+                                    <td> <a href={'/patient=' + item.id}   >link...</a></td>
+                                </tr>
+                            ))
+                            }
                         </tbody>
                     </table>
-                </div>  
+                </div>
             </div>
         </div>
     )
