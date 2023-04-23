@@ -138,11 +138,9 @@ export const AddForm = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         if(validate(details)){
-            console.log('details: ',details)
-            console.log('idList: ',idList)
             // write adding data code.
             let ref = addDoc(collection(db, 'patient_data'),details)
-            console.log('done feeding data')
+            alert('Data added successfully!')
             //data saved but not checked.
         }
     }
