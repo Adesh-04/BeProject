@@ -122,7 +122,7 @@ export const AddForm = () => {
                                 height >= 70 && height <= 300 ?
                                     weight >= 20 && weight <= 300 ?
                                         age >= 10 && age <= 140 ?
-                                            updateData(e)
+                                            exp = true
                                             : alert('Enter correct Age')
                                         : alert('Enter correct Weight')
                                     : alert('Enter Correct Height')
@@ -132,21 +132,7 @@ export const AddForm = () => {
                     : alert('Enter Correct Id')
                 : alert('Enter Data')
             : alert('Enter Id')
-
-        // // Checking if the id length is valid
-        // if (tar.id.value.length != 20) {
-        //     alert("Enter Correct Id")
-        // }else{
-        //     // Checking other non optional data 
-        //     tar.name.value && tar.address.value && tar.height.value && tar.weight.value && tar.age.value ?
-        //         updateData(e)
-        //         : alert("Enter credentials")
-
-        // }
-
-
-
-
+        return exp
     }
 
     const handleSubmit = (e) => {
