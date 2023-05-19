@@ -76,15 +76,15 @@ export const AddForm = () => {
                                     weight >= 20 && weight <= 300 ?
                                         age >= 10 && age <= 140 ?
                                             updateData(e)
-                                            : alert('Enter correct Age')
-                                        : alert('Enter correct Weight')
-                                    : alert('Enter Correct Height')
-                                : alert('Address must have minimum Road, City and State')
-                            : alert('Fullname should be minimum 6 alphabet long')
-                        : alert('Data already Exists')
-                    : alert('Enter Correct Id')
-                : alert('Enter Data')
-            : alert('Enter Id')
+                                        : alert('Enter correct Age')
+                                    : alert('Enter correct Weight')
+                                : alert('Enter Correct Height')
+                            : alert('Address must have minimum Road, City and State')
+                        : alert('Fullname should be minimum 6 alphabet long')
+                    : alert('Data already Exists')
+                : alert('Enter Correct Id')
+            : alert('Enter Data')
+        : alert('Enter Id')
 
         // // Checking if the id length is valid
         // if (tar.id.value.length != 20) {
