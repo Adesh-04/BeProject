@@ -143,6 +143,9 @@ export const AddForm = () => {
             alert('Data added successfully!')
             //data saved but not checked.
         }
+
+        console.log(details)
+        
     }
 
     return (
@@ -166,7 +169,7 @@ export const AddForm = () => {
                         <input onChange={handleChange} type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Address" title='Address must have minimum Road, City and State' required />
 
                         <label htmlFor='Age'> Age  :  </label>
-                        <input onChange={handleChange} type="number" name="Age" title='Enter Age' required />
+                        <input onChange={handleChange} type="date" name="Age" title='Enter Age' required />
 
                         <label htmlFor='Height'> Height  :  </label>
                         <input onChange={handleChange} type="number" placeholder='in cms' name="Height" title='Height in cms' required />
