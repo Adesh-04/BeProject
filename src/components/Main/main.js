@@ -2,7 +2,8 @@ import React from 'react';
 import icon from './../../assets/images/top-up.png'
 import { db, real } from './../../firebase'
 import {collection, getDocs} from 'firebase/firestore'
-import { getDatabase, ref, onValue } from "firebase/database";
+import { ref, onValue } from "firebase/database";
+// import { getDatabase } from "firebase/database";
 import { useEffect, useState } from 'react';
 
 export const Main = () => {
@@ -51,7 +52,7 @@ export const Main = () => {
             {/* NAVBAR */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">City Hospital</a>
+                    <a className="navbar-brand" href="\">City Hospital</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -104,7 +105,7 @@ export const Main = () => {
                                          <td> {item.Pulse} </td>
                                          <td> {item.Disease ? item.Disease : 'None'} </td>
                                          <td> {item.Condition ? item.Condition : 'None'} </td>
-                                         <td> <a href={ '/patient='+ item.id }><img className='img-icon' src={icon}/></a></td>
+                                    <td> <a href={'/patient=' + item.id}><img className='img-icon' alt="img" src={icon} /></a></td>
                                     </tr>
                                 ) )
                             }                              

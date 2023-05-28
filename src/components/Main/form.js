@@ -38,7 +38,7 @@ export const AddForm = () =>{
         var tar = e.target
         
         // Checking if the id length is valid
-        if (tar.id.value.length != 20){
+        if (tar.id.value.length !== 20) {
             alert("Enter Correct Id")
         }else{ 
             // Checking other non optional data 

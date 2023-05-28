@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import Bottom from './Bottom.js'
+// import { useNavigate } from 'react-router-dom';
+// import Bottom from './Bottom.js'
 import Middle from './Middle.js'
 import './../details.css'
 import chaticon from './../../assets/images/chat.png'
@@ -11,21 +11,21 @@ import send from './../../assets/images/send-message.png'
 
 function Chat() {
     const [showVal, showBox1] = useState('none')
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     function showBox(){
-        if(showVal=='block'){
+        if (showVal === 'block') {
             showBox1('none');
         }
-        if(showVal=='none'){
+        if (showVal === 'none') {
             showBox1('block');
         }
     }
     function showMini(){
-        if(showVal=='block'){
+        if (showVal === 'block') {
             showBox1('none');
         }
-        if(showVal=='none'){
+        if (showVal === 'none') {
             showBox1('block');
         }
 
