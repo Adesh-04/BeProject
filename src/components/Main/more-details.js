@@ -3,7 +3,7 @@ import './../details.css';
 import { db, real } from './../../firebase';
 import { ref, onValue} from "firebase/database";
 import {collection, getDocs} from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Chat from '../chat/chat.js'
 
 export const Details = (props) =>{
@@ -12,7 +12,7 @@ export const Details = (props) =>{
     const arr = path.split('=')
     const ID = arr[1]    
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     
     // Storing the patient data
     const [patient, setPatient] = useState([])
@@ -58,8 +58,8 @@ export const Details = (props) =>{
     var O2
 
     // creating reference to the realtime database only if patient id exists
-    const PulseRef = ref(real, 'users/' + ID + '/Pulse/' );
-    const O2Ref = ref(real, 'users/' + ID + '/SpO2/' );
+    // const PulseRef = ref(real, 'users/' + ID + '/Pulse/' );
+    // const O2Ref = ref(real, 'users/' + ID + '/SpO2/' );
     const TempRef = ref(real, 'users/' + ID + '/Temp/' );
     
 

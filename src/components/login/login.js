@@ -1,6 +1,6 @@
 import './login.css'
 import {v4 as uuid} from 'uuid'
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect} from 'react';
 // db is the instance taken from firebase.js config file
 import { db } from './../../firebase';
@@ -49,7 +49,7 @@ export const Login = () => {
         var pwd = e.target.password.value
         
         // Checking if the database contains any login data
-        if (login.length !=0){
+        if (login.length !== 0) {
             // The username field can contain userid or email
             // if email then push the email to the {usrs} list otherwise other
             if (usr.includes('@') ){
@@ -71,7 +71,7 @@ export const Login = () => {
             var count = usrs.indexOf(usr)
 
             // Checking the password
-            if (login[count].password == pwd){
+            if (login[count].password === pwd) {
                 const cookie = new Cookies();
                 cookie.set('loginToken', true, { path: '/' });
                 console.log("cookie created and login token = "+cookie.get('loginToken')); 
@@ -164,7 +164,7 @@ export const Signup = () => {
         // This function verifies the current information with the database
 
         // Checking if database contains any information
-        if (login.length !=0){
+        if (login.length !== 0) {
             // pushing all the emails and mobile numbers into the {usrs} and {nums}
             login.map( (item, i)=> (
                 usrs.push(item.email) && nums.push(item.mobile)
