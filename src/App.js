@@ -1,7 +1,7 @@
 import React from 'react'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
-import './app.css'
+import './App.css'
 import { Home } from './components/home';
 import { Login, Signup} from './components/login/login'
 import { AddForm} from './components/Main/form'

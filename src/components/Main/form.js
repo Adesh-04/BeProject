@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './form.css'
-import { v4 as uuid } from 'uuid'
+// import { v4 as uuid } from 'uuid'
 import { db } from './../../firebase';
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 export const AddForm = () => {
@@ -12,7 +12,6 @@ export const AddForm = () => {
         Address: '',
         Age: '',
         Allergy: {},
-        BP: '',
         BloodGroup: '',
         Condition: '',
         Curr_Med: {},
@@ -21,7 +20,6 @@ export const AddForm = () => {
         Height: '',
         Name: '',
         Past_Med: {},
-        Pulse: '',
         Symptoms: {},
         Weight: '',
         id: ''
@@ -139,7 +137,7 @@ export const AddForm = () => {
         e.preventDefault();
         if (validate(details)) {
             // write adding data code.
-            let ref = addDoc(collection(db, 'patient_data'), details)
+            addDoc(collection(db, 'patient_data'), details)
             alert('Data added successfully!')
             //data saved but not checked.
         }
@@ -174,10 +172,6 @@ export const AddForm = () => {
                         <label htmlFor='Weight'> Weight  :  </label>
                         <input onChange={handleChange} type="number" placeholder='in kilo' name="Weight" title='Weight in kilo' required />
 
-                        <label htmlFor='Pulse'> Pulse  :  </label>
-                        <input onChange={handleChange} type="number" placeholder='' name="Pulse" title='Weight in kilo' required />
-
-
                     </fieldset>
                     <fieldset>
 
@@ -192,9 +186,6 @@ export const AddForm = () => {
 
                         <label htmlFor='Symptoms'> Symptoms {'(comma separated)'}  :  </label>
                         <input onChange={handleChange} type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Symptoms" title='Allergies, enter allergies separated by commas.' required />
-
-                        <label htmlFor='BP'> BP  :  </label>
-                        <input onChange={handleChange} type="number" placeholder='mm/hg' name="BP" title='Blood Pressure mm/hg' required />
 
                         <label htmlFor='BloodGroup'> Blood Group  :  </label>
                         <input onChange={handleChange} type="text" pattern="^(A|B|AB|O)[+-]$" name="BloodGroup" required />

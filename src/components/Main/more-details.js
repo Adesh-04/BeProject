@@ -45,11 +45,20 @@ export const Details = (props) => {
     const Gen = patient.Gen_D
     const Alle = patient.Allergy
 
+    // const Phone = patient.Phone
+    const Phone = 9860828432
+
+    const Redirect = () => {
+        let number = Phone;
+        let url = "https://web.whatsapp.com/send?phone="
+        url += number
+        window.location.href = url
+    }
 
     return (
         <div>
             <a className='btn btn-secondary left-btn' href='/home'> Home </a>
-            <button className='btn btn-primary'>Chat</button>
+            <button className='btn btn-primary' onClick={Redirect}>Chat</button>
             <div className='wrapper-detail'>
 
                 <h1 className='mt-5 mb-4'> {patient.Name} </h1>
@@ -63,7 +72,7 @@ export const Details = (props) => {
                         <p className='btn info-btn'>Gender :  {patient.Gender} </p>
                         <p className='btn info-btn'>Height :  {patient.Height} </p>
                         <p className='btn info-btn'>Weight :  {patient.Weight} </p>
-                        <p className='btn info-btn'>Blood Group :  {patient.Blood_G} </p>
+                        <p className='btn info-btn'>Blood Group :  {patient.BloodGroup} </p>
                         <p className='btn info-btn'>BP :  {patient.BP} </p>
                         <p className='btn info-btn'>Pulse :  {patient.Pulse} </p>
                         <p className='btn info-btn'>Disease :  {patient.Disease} </p>
@@ -83,7 +92,7 @@ export const Details = (props) => {
                                     Object.keys(patient.Sympt).map((item, i) => (
                                         <li key={i}>{patient.Sympt[item]}</li>
                                     ))
-                                    : console.log('Not Reachable')
+                                    : console.log()
 
                             }
                         </ol>
@@ -98,7 +107,7 @@ export const Details = (props) => {
                                     Object.keys(patient.Curr_Med).map((item, i) => (
                                         <li key={i}>{patient.Curr_Med[item]}</li>
                                     ))
-                                    : console.log('Not Reachable')
+                                    : console.log()
                             }
                         </ol>
                     </div>
@@ -111,7 +120,7 @@ export const Details = (props) => {
                                     Object.keys(patient.Past_Med).map((item, i) => (
                                         <li key={i}>{patient.Past_Med[item]}</li>
                                     ))
-                                    : console.log('Not Reachable')
+                                    : console.log()
                             }
                         </ol>
                     </div>
@@ -124,7 +133,7 @@ export const Details = (props) => {
                                     Object.keys(patient.Gen_D).map((item, i) => (
                                         <li key={i}>{patient.Gen_D[item]}</li>
                                     ))
-                                    : console.log('Not Reachable')
+                                    : console.log()
                             }
                         </ol>
                     </div>
@@ -137,7 +146,7 @@ export const Details = (props) => {
                                     Object.keys(patient.Allergy).map((item, i) => (
                                         <li key={i}>{patient.Allergy[item]}</li>
                                     ))
-                                    : console.log('Not Reachable')
+                                    : console.log()
                             }
                         </ol>
                     </div>
