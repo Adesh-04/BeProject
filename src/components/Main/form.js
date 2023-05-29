@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './form.css'
-import { v4 as uuid } from 'uuid'
+// import { v4 as uuid } from 'uuid'
 import { db } from './../../firebase';
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 export const AddForm = () => {
-    
+
     const [details, setDetails] = useState({
-        Address:'',
-        Age:'',
-        Allergy:{},
-        BP:'',
-        BloodGroup:'',
-        Condition:'',
-        Curr_Med:{},
-        Disease:'',
-        Gender:'',
-        Height:'',
-        Name:'',
-        Past_Med:{},
-        Pulse:'',
-        Symptoms:{},
-        Weight:'',
-        id:''
+        Address: '',
+        Age: '',
+        Allergy: {},
+        BloodGroup: '',
+        Condition: '',
+        Curr_Med: {},
+        Disease: '',
+        Gender: '',
+        Height: '',
+        Name: '',
+        Past_Med: {},
+        Symptoms: {},
+        Weight: '',
+        id: ''
     })
 
     //     const validate = (e) => {
@@ -75,35 +73,35 @@ export const AddForm = () => {
 
     let idList = []
     console.log(idList)
-    async function fetchData(){
+    async function fetchData() {
         let ref = collection(db, 'patient_data')
         let totalColl = await getDocs(ref)
-        let allEntries = totalColl.docs.map((doc)=>({
-            ...doc.data(), id:doc.id
+        let allEntries = totalColl.docs.map((doc) => ({
+            ...doc.data(), id: doc.id
         }))
-        for(let i in allEntries){
+        for (let i in allEntries) {
             idList.push(allEntries[i].id)
         }
     }
     fetchData()
 
-    const handleChange = (e)=>{
-        let {name, value} = e.target;
-        if(name === 'Allergy' || name === 'Past_Med' || name === 'Symptoms' || name === 'Curr_Med'){
+    const handleChange = (e) => {
+        let { name, value } = e.target;
+        if (name === 'Allergy' || name === 'Past_Med' || name === 'Symptoms' || name === 'Curr_Med') {
             let valueArr = value.split(',');
-            let a = valueArr.map((e)=>{
+            let a = valueArr.map((e) => {
                 e = e.trim()
                 e = e.charAt(0).toUpperCase() + e.slice(1)
                 return e
             })
-            value = Object.assign({},a)
+            value = Object.assign({}, a)
         }
         setDetails(details => ({
             ...details, [name]: value
         }))
     }
 
-    const validate = (e)=>{
+    const validate = (e) => {
         let exp = false
         var id = e.id
         var name = e.Name
@@ -113,33 +111,33 @@ export const AddForm = () => {
         var age = e.Age
 
         id ?
-        name && address && height && weight && age ?
-            // validation length
-            id.length === 20 ?
-                !idList.includes(id) ?
-                    name.length >= 6 ?
-                        address.length >= 10 ?
-                            height >= 70 && height <= 300 ?
-                                weight >= 20 && weight <= 300 ?
-                                    age >= 10 && age <= 140 ?
-                                        exp = true
-                                        : alert('Enter correct Age')
-                                    : alert('Enter correct Weight')
-                                : alert('Enter Correct Height')
-                            : alert('Address must have minimum Road, City and State')
-                        : alert('Fullname should be minimum 6 alphabet long')
-                    : alert('Data already Exists')
-                : alert('Enter Correct Id')
-            : alert('Enter Data')
-        : alert('Enter Id')
+            name && address && height && weight && age ?
+                // validation length
+                id.length === 20 ?
+                    !idList.includes(id) ?
+                        name.length >= 6 ?
+                            address.length >= 10 ?
+                                height >= 70 && height <= 300 ?
+                                    weight >= 20 && weight <= 300 ?
+                                        age >= 10 && age <= 140 ?
+                                            exp = true
+                                            : alert('Enter correct Age')
+                                        : alert('Enter correct Weight')
+                                    : alert('Enter Correct Height')
+                                : alert('Address must have minimum Road, City and State')
+                            : alert('Fullname should be minimum 6 alphabet long')
+                        : alert('Data already Exists')
+                    : alert('Enter Correct Id')
+                : alert('Enter Data')
+            : alert('Enter Id')
         return exp
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if(validate(details)){
+        if (validate(details)) {
             // write adding data code.
-            let ref = addDoc(collection(db, 'patient_data'),details)
+            addDoc(collection(db, 'patient_data'), details)
             alert('Data added successfully!')
             //data saved but not checked.
         }
@@ -160,7 +158,7 @@ export const AddForm = () => {
                         <input onChange={handleChange} type="text" id='id' pattern="^[a-z0-9]{20}$" title='Device Id' name="id" />
 
                         <label htmlFor='Gender'> Gender  :  </label>
-                        <input onChange={handleChange} type="text" id='gender'  title='Gender' name="Gender" />
+                        <input onChange={handleChange} type="text" id='gender' title='Gender' name="Gender" />
 
                         <label htmlFor='Name'> Name  :  </label>
                         <input onChange={handleChange} type="text" pattern="[A-Za-z ]+" name="Name" title='Fullname should be minimum 6 alphabet long' required />
@@ -177,13 +175,9 @@ export const AddForm = () => {
                         <label htmlFor='Weight'> Weight  :  </label>
                         <input onChange={handleChange} type="number" placeholder='in kilo' name="Weight" title='Weight in kilo' required />
 
-                        <label htmlFor='Pulse'> Pulse  :  </label>
-                        <input onChange={handleChange} type="number" placeholder='' name="Pulse" title='Weight in kilo' required />
-
-                        
                     </fieldset>
                     <fieldset>
-                        
+
                         <label htmlFor='Allergy'> Allergies {'(comma separated)'}  :  </label>
                         <input onChange={handleChange} type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Allergy" title='Allergies, enter allergies separated by commas.' required />
 
@@ -195,9 +189,6 @@ export const AddForm = () => {
 
                         <label htmlFor='Symptoms'> Symptoms {'(comma separated)'}  :  </label>
                         <input onChange={handleChange} type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Symptoms" title='Allergies, enter allergies separated by commas.' required />
-
-                        <label htmlFor='BP'> BP  :  </label>
-                        <input onChange={handleChange} type="number" placeholder='mm/hg' name="BP" title='Blood Pressure mm/hg' required />
 
                         <label htmlFor='BloodGroup'> Blood Group  :  </label>
                         <input onChange={handleChange} type="text" pattern="^(A|B|AB|O)[+-]$" name="BloodGroup" required />

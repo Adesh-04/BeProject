@@ -50,19 +50,12 @@ export const Login = () => {
 
         // Checking if the database contains any login data
         if (login.length !== 0) {
-            // The username field can contain userid or email
-            // if email then push the email to the {usrs} list otherwise other
-            if (usr.includes('@')) {
-                // pushing all the data from the database using map function
-                login.map((item, i) => (
-                    usrs.push(item.email)
-                ))
-            }
-            else {
-                login.map((item, i) => (
-                    usrs.push(item.userid)
-                ))
-            }
+            // The username field can contain email
+            // if email then push the email to the {usrs} list 
+            // pushing all the data from the database using map function
+            login.map((item, i) => (
+                usrs.push(item.email)
+            ))
         }
 
         // Checking if the current input is in the {usrs} list 
@@ -91,8 +84,8 @@ export const Login = () => {
                         <h1> Login </h1><bt />
                         <fieldset>
 
-                            <label for="name">Username</label>
-                            <input type="text" id="username" name="username" />
+                            <label for="name">Email</label>
+                            <input type="email" id="username" name="username" />
 
                             <label for="password">Password</label>
                             {/* Regex for simpler validation in pattern attribute */}
