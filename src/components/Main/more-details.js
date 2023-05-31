@@ -12,7 +12,6 @@ export const Details = (props) => {
 
     // Storing the patient data
     const [patient, setPatient] = useState([])
-    const [ids, setIds] = useState([])
     const [realData, setReal] = useState([])
 
     // Reference for the patient_data in the database
@@ -40,7 +39,6 @@ export const Details = (props) => {
                 // taking the value 
                 const data = snapshot.val();
                 var arr = Object.keys(data)
-                setIds(Object.keys(data))
 
                 var values = [];
 
@@ -131,7 +129,7 @@ export const Details = (props) => {
                         <p className='btn info-btn'>Pulse :  {getPulse(patient.id)} </p>
                         <p className='btn info-btn'>SpO2 :  {getSpO2(patient.id)} </p>
                         <p className='btn info-btn'>Disease :  {patient.Disease} </p>
-                        <p className='btn info-btn'>Condition :  {patient.Condition} </p>
+                        <p className='btn info-btn'>Predicted :  {patient.Predicted} </p>
 
                     </div>
                 </div>

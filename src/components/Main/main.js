@@ -3,13 +3,11 @@ import { db, real } from './../../firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { ref, onValue } from "firebase/database";
 import { useEffect, useState } from 'react';
-import { Button } from 'bootstrap';
 
 export const Main = ({setSignedIn}) => {
 
     // Storing patient data locally
     const [patient, setPatient] = useState([])
-    const [ids, setIds] = useState([])
     const [realData, setReal] = useState([])
 
     // Reference to the patient_data collection in firestore database
@@ -37,7 +35,6 @@ export const Main = ({setSignedIn}) => {
                 // taking the value 
                 const data = snapshot.val();
                 var arr = Object.keys(data)
-                setIds(Object.keys(data))
 
                 var values = [];
 
@@ -85,15 +82,14 @@ export const Main = ({setSignedIn}) => {
         return '??'
     }
 
-    console.log(realData)
-
     return (
         <div className='Wrapper-page'>
 
             {/* NAVBAR */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">City Hospital</a>
+                    <p className="navbar-brand">City Hospital</p>
+
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -103,13 +99,9 @@ export const Main = ({setSignedIn}) => {
                                 <a className="nav-link active" aria-current="page" href="/add">Add New Patient</a>
                             </li>
                         </ul>
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item mx-2">
-                                <button onClick={()=>{setSignedIn(false)}} className="nav-link active btn btn-primary" aria-current="page">Log Out</button>
-                            </li>
-                        </ul>
-
                     </div>
+                    <button onClick={()=>{setSignedIn(false)}} className="btn btn-primary right-btn">Log Out</button>
+
                 </div>
             </nav>
 
@@ -131,7 +123,7 @@ export const Main = ({setSignedIn}) => {
                                 <th> Pulse </th>
                                 <th> Oxygen Rate </th>
                                 <th> Disease </th>
-                                <th> Condition </th>
+                                <th> Predicted </th>
                                 <th> View </th>
                             </tr>
                         </thead>
@@ -150,7 +142,7 @@ export const Main = ({setSignedIn}) => {
                                     <td> {getPulse(item.id)} </td>
                                     <td> {getSpO2(item.id)} </td>
                                     <td> {item.Disease ? item.Disease : 'None'} </td>
-                                    <td> {item.Condition ? item.Condition : 'None'} </td>
+                                    <td> {item.Condition ? item.Prediction : 'None'} </td>
                                     <td> <a href={'/patient=' + item.id}   >link...</a></td>
                                 </tr>
                             ))

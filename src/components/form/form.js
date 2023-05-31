@@ -14,7 +14,7 @@ export const AddForm = () => {
         Date: '',
         Allergy: {},
         BloodGroup: '',
-        Condition: '',
+        Predicted: '',
         Phone: '',
         Curr_Med: {},
         Disease: '',
@@ -93,7 +93,6 @@ export const AddForm = () => {
         var phone = e.Phone
         var height = e.Height
         var weight = e.Weight
-        var date = e.Date
 
         id ?
             name && height && weight && phone  ?
@@ -243,11 +242,6 @@ export const AddForm = () => {
                         <div className='form-past'>
                             <p className='form-label'> Past Meds {'(comma separated)'}  :  </p>
                             <input onChange={handleChange} className='form-input' type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Past_Med" title='Enter Comma Seperated' required />
-                        </div>
-
-                        <div className='form-condition'>
-                            <span className='form-label'> Condition  :  </span>
-                            <input onChange={handleChange} className='form-input' type="text" title="Enter NA if not applicable" name="Condition" />
                         </div>
                     </div>
                 </div>

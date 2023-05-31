@@ -21,6 +21,12 @@
     top: 2em;
 }
 
+.right-btn{
+    position: absolute;
+    right: 1em;
+    top: .5em;
+}
+
 .Header {
     text-align: center;
     font-weight: 600;
