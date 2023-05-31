@@ -1,22 +1,49 @@
-body{
-    background-color: rgb(215, 245, 255);
-
-}
-.App {
-    text-align: center;
-}
-.header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15%;
-}
-.footer{
+.login-wrapper {
+    background: #f4f7f8;
     margin: 0;
     padding: 0;
-    position: absolute;
-    bottom: 30px;
+    height: 100vh;
+}
+
+.login-form,
+.signup-form {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 2rem;
+    background: white;
+    border-radius: 1rem;
+}
+.login-title, .signup-title {
+    margin-bottom: 3rem ;
+    text-align: center;
+}
+.login-input, .signup-input {
+    outline: 0;
+    padding: 15px;
     width: 100%;
-    background-color: aliceblue;
+    color: #2e3235;
+    margin-bottom: 3rem;
+    border: 1px solid rgb(192, 181, 181);
+    border-radius: 1rem;
+    background-color: #e8eeef;
+}
+    
+.login-field, .signup-field {
+    margin-bottom: 3rem;
+}
+
+.login-label, .signup-label {
+    margin-bottom: 1rem;
+}
+
+.login-button , .signup-button {
+    padding: 1rem 4rem 1rem 4rem;
+    color: #FFF;
+    background-color: #4bc970;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border: none;
 }

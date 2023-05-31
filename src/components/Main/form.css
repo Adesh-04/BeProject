@@ -1,9 +1,0 @@
-.AddForm {
-    display: grid;
-    grid-template-columns: 40% 40%;
-    row-gap: 1em;
-}
-
-fieldset>input {
-    text-align: center;
-}

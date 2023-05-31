@@ -1,13 +1,14 @@
-import './styles.css';
+// import './styles.css';
+import './login.css';
 import { v4 as uuid } from 'uuid'
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 // db is the instance taken from firebase.js config file
 import { db } from './../../firebase';
-import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { collection, getDocs, setDoc, doc } from 'firebase/firestore'
 
 
-export const Login = () => {
+export const Login = ({setSignedIn}) => {
 
     // Instance for naviagting to webpages
     const navigate = useNavigate()
@@ -50,7 +51,7 @@ export const Login = () => {
 
         // Checking if the database contains any login data
         if (login.length !== 0) {
-            // The username field can contain email
+            // The username login-field can contain email
             // if email then push the email to the {usrs} list 
             // pushing all the data from the database using map function
             login.map((item, i) => (
@@ -65,7 +66,8 @@ export const Login = () => {
 
             // Checking the password
             if (login[count].password === pwd) {
-                navigate('/home')
+                setSignedIn(true)
+                navigate('/')
             } else {
                 alert("Invalid Credentials")
             }
@@ -76,26 +78,24 @@ export const Login = () => {
 
 
     return (
-        <div className="App ">
-            <br /><br /><br />
+        <div className="login-wrapper">
+            
             <div className="row">
                 <div className="col-md-12">
                     <form className='login-form' onSubmit={(e) => { validate(e) }} autoComplete={'off'}>
-                        <h1> Login </h1><bt />
-                        <fieldset>
+                        <h1 className='login-title'> Login </h1>
+                        <fieldset className='login-field'>
 
-                            <label for="name">Email</label>
-                            <input type="email" id="username" name="username" />
+                            <label className='login-label' for="name">Email</label>
+                            <input className='login-input' type="email" id="username" name="username" />
 
-                            <label for="password">Password</label>
-                            {/* Regex for simpler validation in pattern attribute */}
-                            <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" />
-                            <input type='date' />
+                            <label className='login-label' for="password">Password</label>
+                            <input className='login-input' type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" />
 
                             <button className='login-button' type="submit">Login</button>
 
                         </fieldset>
-                        <fieldset>
+                        <fieldset className='login-field'>
                             <p className='signup-text'>Don't Have an account
                                 <button className="btn">
                                     <a className='btn btn-primary' href='/signup'>Signup</a>
@@ -154,7 +154,8 @@ export const Signup = () => {
         var mail = e.target.email.value
         mail = mail.toLowerCase()
         var num = e.target.number.value
-        var pwd = e.target.password.value
+        var pwd = e.target.password.value.trim()
+        var cpwd = e.target.cpassword.value.trim()        
 
         // Checking if there is a input in the form
         usr && pwd ?
@@ -162,7 +163,9 @@ export const Signup = () => {
             usr.length >= 5 ?
                 // validating the length of password
                 pwd.length >= 8 ?
-                    validate2(usr, pwd, mail, num)
+                    pwd === cpwd ?
+                        validate2(usr, pwd, mail, num)
+                        : alert("Password Doesn't match")
                     : alert("Password Should be 8 Character Minimum")
                 : alert("Name Too Short")
             : alert("Enter Something")
@@ -203,7 +206,7 @@ export const Signup = () => {
     const sendData = async (data) => {
         // This function sends the data to the database
         // addDoc method will wait until all the data is sent to the database
-        await addDoc(loginRef, data);
+        await setDoc(doc(db, 'login', data.id), data);
         alert("Signed UP")
         // Navigate to the login page
         navigate('/form')
@@ -215,21 +218,24 @@ export const Signup = () => {
                 <div className="col-md-12">
 
                     <form className='signup-form' onSubmit={(e) => { validate(e) }} autoComplete={'off'}>
-                        <h1> Signup </h1>
+                        <h1 className='title'> Signup </h1>
 
-                        <fieldset>
+                        <fieldset className='signup-field'>
 
-                            <label htmlFor="username">Name:</label>
-                            <input type="text" id="username" name="username" />
+                            <label className='signup-label' htmlFor="username">Name:</label>
+                            <input className='signup-input' type="text" id="username" name="username" />
 
-                            <label htmlFor="name">Email:</label>
-                            <input type="email" id="email" name="email" />
+                            <label className='signup-label' htmlFor="name">Email:</label>
+                            <input className='signup-input' type="email" id="email" name="email" />
 
-                            <label htmlFor="name">Mobile Number:</label>
-                            <input type="text" id='number' name="number" pattern="[7-9]{1}[0-9]{9}" />
+                            <label className='signup-label' htmlFor="name">Mobile Number:</label>
+                            <input className='signup-input' type="text" id='number' name="number" pattern="[7-9]{1}[0-9]{9}" />
 
-                            <label htmlFor="password">Password:</label>
-                            <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" />
+                            <label className='signup-label' htmlFor="password">Password:</label>
+                            <input className='signup-input' type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" />
+
+                            <label className='signup-label' htmlFor="password">Confirm Password:</label>
+                            <input className='signup-input' type="password" id="cpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="cpassword" />
 
                             <button className='signup-button' type="submit">Sign In</button>
 

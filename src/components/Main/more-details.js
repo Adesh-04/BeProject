@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './../details.css';
-import { db } from './../../firebase';
+import './details.css';
+import { db, real } from './../../firebase';
+import { ref, onValue } from "firebase/database";
 import { collection, getDocs } from 'firebase/firestore';
 
 export const Details = (props) => {
@@ -11,9 +12,14 @@ export const Details = (props) => {
 
     // Storing the patient data
     const [patient, setPatient] = useState([])
+    const [ids, setIds] = useState([])
+    const [realData, setReal] = useState([])
 
     // Reference for the patient_data in the database
     const patientRef = collection(db, 'patient_data')
+
+    // Reference for the patient_data in the realtime database
+    const realRef = ref(real, '/users');
 
     useEffect(() => {
         // This will run everytime the page loads
@@ -27,8 +33,30 @@ export const Details = (props) => {
                 ...doc.data(), id: doc.id
             })))
         }
-        // Calling the function
+
+        const getReal = async () => {
+            // Fetching the snapshot of the data from the reference
+            onValue(realRef, (snapshot) => {
+                // taking the value 
+                const data = snapshot.val();
+                var arr = Object.keys(data)
+                setIds(Object.keys(data))
+
+                var values = [];
+
+                arr.map((id, i) => {
+                    values.push([data[id].Pulse, data[id].SpO2])
+                })
+
+                setReal( values.map((data,index) =>({
+                    ...data, id: arr[index]
+                })))
+            })
+        }
+
+        // Calling the functions
         getData();
+        getReal();
     }, [])
 
     // Verifing if patient id exists in the {patient} list
@@ -45,8 +73,7 @@ export const Details = (props) => {
     const Gen = patient.Gen_D
     const Alle = patient.Allergy
 
-    // const Phone = patient.Phone
-    const Phone = 9860828432
+    const Phone = patient.Phone
 
     const Redirect = () => {
         let number = Phone;
@@ -55,8 +82,36 @@ export const Details = (props) => {
         window.location.href = url
     }
 
+    const getAge = (date) =>{
+        const currentDate = new Date();
+        const birthDate = new Date(date);
+        const ageInMilliseconds = currentDate - birthDate;
+        const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25;
+        const ageInYears = Math.floor(ageInMilliseconds / millisecondsInYear);
+
+        return ageInYears
+    }
+
+    const getPulse = (id) =>{
+        const obj = realData.find(item => item.id === id);
+        if (obj) {
+            const value = obj[0];
+            return value
+        }
+        return '??'
+    }
+    
+    const getSpO2 = (id) =>{
+        const obj = realData.find(item => item.id === id);
+        if (obj) {
+            const value = obj[1];
+            return value
+        }
+        return '??'
+    }
+
     return (
-        <div>
+        <div className='details-page'>
             <a className='btn btn-secondary left-btn' href='/home'> Home </a>
             <button className='btn btn-primary' onClick={Redirect}>Chat</button>
             <div className='wrapper-detail'>
@@ -68,13 +123,13 @@ export const Details = (props) => {
                     </div>
                     <div className="mt-4" id='Info'>
 
-                        <p className='btn info-btn'>Age :  {patient.Age} </p>
+                        <p className='btn info-btn'>Age :  {getAge(patient.Date)} </p>
                         <p className='btn info-btn'>Gender :  {patient.Gender} </p>
                         <p className='btn info-btn'>Height :  {patient.Height} </p>
                         <p className='btn info-btn'>Weight :  {patient.Weight} </p>
                         <p className='btn info-btn'>Blood Group :  {patient.BloodGroup} </p>
-                        <p className='btn info-btn'>BP :  {patient.BP} </p>
-                        <p className='btn info-btn'>Pulse :  {patient.Pulse} </p>
+                        <p className='btn info-btn'>Pulse :  {getPulse(patient.id)} </p>
+                        <p className='btn info-btn'>SpO2 :  {getSpO2(patient.id)} </p>
                         <p className='btn info-btn'>Disease :  {patient.Disease} </p>
                         <p className='btn info-btn'>Condition :  {patient.Condition} </p>
 
