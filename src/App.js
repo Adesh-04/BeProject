@@ -22,7 +22,7 @@ function App() {
           {signedIn ? 
             <Routes>
               <Route exact path="/add" element={<AddForm/>}/>
-              <Route exact path="/" element={<Main/>}/>
+              <Route exact path="/" element={<Main setSignedIn={setSignedIn}/>}/>
               <Route exact path={'/patient=:userId'} element={<Details  />}/>
             </Routes>
             :

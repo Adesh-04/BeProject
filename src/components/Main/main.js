@@ -3,8 +3,9 @@ import { db, real } from './../../firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { ref, onValue } from "firebase/database";
 import { useEffect, useState } from 'react';
+import { Button } from 'bootstrap';
 
-export const Main = () => {
+export const Main = ({setSignedIn}) => {
 
     // Storing patient data locally
     const [patient, setPatient] = useState([])
@@ -100,6 +101,11 @@ export const Main = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item mx-2">
                                 <a className="nav-link active" aria-current="page" href="/add">Add New Patient</a>
+                            </li>
+                        </ul>
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item mx-2">
+                                <button onClick={()=>{setSignedIn(false)}} className="nav-link active btn btn-primary" aria-current="page">Log Out</button>
                             </li>
                         </ul>
 
