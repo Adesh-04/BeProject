@@ -1,0 +1,142 @@
+.form-wrapper {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    padding-top: 2rem;
+    background-color: aliceblue;
+}
+
+.form-header{
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 30px;
+}
+
+.main-form {
+    margin: 0;
+    padding: 3em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 2px solid lightblue;
+}
+
+.form-label {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 20;
+    color: black;
+}
+
+.form-input{
+    border: 0;
+    padding: 0;
+    height: 2rem;
+    font-size: 1em;
+    font-weight: 500;
+    background: none;
+    border-bottom: 2px solid grey;
+    outline: none;
+}
+
+.form-input:focus{
+    border-color: blue;
+}
+
+.form-device, 
+.form-phone, 
+.form-height,
+.form-name,
+.form-birth,
+.form-blood,
+.form-symptom, 
+.form-allergy, 
+.form-curr,
+.form-past,
+.form-disease,
+.form-condition,
+.form-weight{
+    margin-bottom: 2em;
+}
+
+.form-device > .form-span{
+    font-weight: bold;
+}
+
+.form-device > .form-input,
+.form-phone > .form-input,
+.form-height > .form-input,
+.form-name > .form-input,
+.form-birth > .form-input,
+.form-blood > .form-input,
+.form-weight > .form-input{
+    margin-left: 1em;
+}
+
+.form-name > .form-input{
+    margin-left : 5em;
+}
+
+.form-birth > .form-input{
+    margin-left : 3.5em;
+    padding-left: 3em;
+}
+
+.form-blood > .form-input{
+    margin-left : 2em;
+}
+
+.form-weight > .form-input{
+    margin-left : 4.5em;
+}
+
+.form-symptom > .form-input, 
+.form-allergy > .form-input, 
+.form-curr > .form-input,
+.form-past > .form-input,
+.form-disease > .form-input,
+.form-condition > .form-input{
+    margin-left: 1em;
+    width: 20em;
+}
+
+
+.form-address > div {
+    padding-block: .5em;
+    padding-inline: 1em;
+}
+
+.form-address > .form-flex{
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+}
+
+.form-address-wrapper > input{
+    margin-bottom: .25em;
+}
+
+.form-gender{
+    width: 70%;
+}
+
+.form-gender > .form-flex {
+    padding-inline : 3em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-gender > .form-flex > div {
+    display: flex;
+    align-items: center;
+}
+
+.form-gender > .form-flex > div > .form-span{
+    padding-right: .2em;
+}
+
+
+

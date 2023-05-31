@@ -1,34 +1,36 @@
-.App{
+.App {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    text-align: center;
+    height: 100vh;
 }
 
-.img-side > img {
+.img-side>img {
     border-radius: 3rem 6rem 9rem;
 }
 
-.Wrapper-page{
+.Wrapper-page {
     background-color: Beige;
-    width : 100%;
-    min-height : 100vh;
+    width: 100%;
+    min-height: 100vh;
 }
 
-.left-btn{
+.left-btn {
     position: absolute;
-    left : 1em;
-    top : 2em;
+    left: 1em;
+    top: 2em;
 }
 
-.Header{
+.Header {
     text-align: center;
     font-weight: 600;
 }
 
-.Main{
+.Main {
     min-height: 70vh;
 }
 
-.Side-menu{
+.Side-menu {
     margin: 0.1em 0.5em;
     padding: 1em 0em;
     text-align: center;
@@ -36,7 +38,7 @@
     border-right: 1px solid lightgrey;
 }
 
-.Content{
+.Content {
     margin: 0.1em 0.5em;
     padding: 1.25em 1em;
     background-color: White;

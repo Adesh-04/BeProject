@@ -8,12 +8,14 @@ export const Main = () => {
 
     // Storing patient data locally
     const [patient, setPatient] = useState([])
+    const [ids, setIds] = useState([])
+    const [realData, setReal] = useState([])
 
     // Reference to the patient_data collection in firestore database
     const patientRef = collection(db, 'patient_data')
 
     // Reference to the Pulse reading from the real-time database
-    const pulseRef = ref(real, '/Pulse');
+    const realRef = ref(real, '/users');
 
 
     useEffect(() => {
@@ -24,29 +26,68 @@ export const Main = () => {
             const data = await getDocs(patientRef);
             // Stores the data locally
             setPatient(data.docs.map((doc) => ({
-                ...doc.data(), id: doc.id
+                ...doc.data()
             })))
         }
 
-        const getPulse = async () => {
+        const getReal = async () => {
             // Fetching the snapshot of the data from the reference
-            onValue(pulseRef, (snapshot) => {
+            onValue(realRef, (snapshot) => {
                 // taking the value 
                 const data = snapshot.val();
-                console.log(data)
+                var arr = Object.keys(data)
+                setIds(Object.keys(data))
+
+                var values = [];
+
+                arr.map((id, i) => {
+                    values.push([data[id].Pulse, data[id].SpO2])
+                })
+
+                setReal( values.map((data,index) =>({
+                    ...data, id: arr[index]
+                })))
             })
         }
+
         // Calling both the functions
         getData();
-        getPulse();
+        getReal();
     }, [])
 
+    const getAge = (date) =>{
+        const currentDate = new Date();
+        const birthDate = new Date(date);
+        const ageInMilliseconds = currentDate - birthDate;
+        const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25;
+        const ageInYears = Math.floor(ageInMilliseconds / millisecondsInYear);
+
+        return ageInYears
+    }
+
+    const getPulse = (id) =>{
+        const obj = realData.find(item => item.id === id);
+        console.log(id)
+        if (obj) {
+            const value = obj[0];
+            return value
+        }
+        return '??'
+    }
+    
+    const getSpO2 = (id) =>{
+        const obj = realData.find(item => item.id === id);
+        if (obj) {
+            const value = obj[1];
+            return value
+        }
+        return '??'
+    }
+
+    console.log(realData)
 
     return (
         <div className='Wrapper-page'>
-            <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Home </a> </button>
-
-
 
             {/* NAVBAR */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -81,8 +122,8 @@ export const Main = () => {
                                 <th> Name </th>
                                 <th> Address </th>
                                 <th> Age </th>
-                                <th> BP </th>
                                 <th> Pulse </th>
+                                <th> Oxygen Rate </th>
                                 <th> Disease </th>
                                 <th> Condition </th>
                                 <th> View </th>
@@ -99,9 +140,9 @@ export const Main = () => {
                                     <td> {i + 1} </td>
                                     <td> {item.Name} </td>
                                     <td> {item.Address} </td>
-                                    <td> {item.Age} </td>
-                                    <td> {item.BP} </td>
-                                    <td> {item.Pulse} </td>
+                                    <td> {getAge(item.Date)} </td>
+                                    <td> {getPulse(item.id)} </td>
+                                    <td> {getSpO2(item.id)} </td>
                                     <td> {item.Disease ? item.Disease : 'None'} </td>
                                     <td> {item.Condition ? item.Condition : 'None'} </td>
                                     <td> <a href={'/patient=' + item.id}   >link...</a></td>

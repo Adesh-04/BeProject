@@ -1,0 +1,13 @@
+.home-wrapper {
+    text-align: center;
+}
+
+.home-img-side>img {
+    border-radius: 3rem 6rem 9rem;
+}
+
+.left-btn {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+}
