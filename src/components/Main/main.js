@@ -3,6 +3,7 @@ import { db, real } from './../../firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { ref, onValue } from "firebase/database";
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Main = ({setSignedIn}) => {
 
@@ -100,7 +101,7 @@ export const Main = ({setSignedIn}) => {
                             </li>
                         </ul>
                     </div>
-                    <button onClick={()=>{setSignedIn(false)}} className="btn btn-primary right-btn">Log Out</button>
+                    <button onClick={()=>{navigate('/home')}} className="btn btn-primary right-btn">Log Out</button>
 
                 </div>
             </nav>
