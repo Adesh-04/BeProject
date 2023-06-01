@@ -5,7 +5,9 @@ import { ref, onValue } from "firebase/database";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const Main = ({setSignedIn}) => {
+export const Main = () => {
+
+    const navigate = useNavigate();
 
     // Storing patient data locally
     const [patient, setPatient] = useState([])

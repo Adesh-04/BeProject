@@ -11,17 +11,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
 function App() {
-  const [signedIn, setSignedIn] = useState(false)
 
   return (
     <div className="App">
       <Router>
-          {/* <Routes>
-            
-          </Routes> */}
+          {
             <Routes>
               <Route exact path="/add" element={<AddForm/>}/>
-              <Route exact path="/" element={<Main setSignedIn={setSignedIn}/>}/>
+              <Route exact path="/" element={<Main/>}/>
               <Route exact path={'/patient=:userId'} element={<Details  />}/>
               <Route exact path="/home" element={<Home/>}/>
               <Route exact path="/form" element={<Login/>}/>

@@ -7,7 +7,7 @@ import { db } from './../../firebase';
 import { collection, getDocs, setDoc, doc } from 'firebase/firestore'
 
 
-export const Login = ({setSignedIn}) => {
+export const Login = () => {
 
     // Instance for naviagting to webpages
     const navigate = useNavigate()
@@ -65,7 +65,6 @@ export const Login = ({setSignedIn}) => {
 
             // Checking the password
             if (login[count].password === pwd) {
-                setSignedIn(true)
                 navigate('/')
             } else {
                 alert("Invalid Credentials")
