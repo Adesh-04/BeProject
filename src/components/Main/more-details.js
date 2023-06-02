@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './details.css';
 import { db, real } from './../../firebase';
 import { ref, onValue } from "firebase/database";
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
 
 export const Details = (props) => {
     // taking address path
@@ -12,10 +12,12 @@ export const Details = (props) => {
 
     // Storing the patient data
     const [patient, setPatient] = useState([])
+    const [Symptoms, setSymptoms] = useState([])
     const [realData, setReal] = useState([])
 
     // Reference for the patient_data in the database
     const patientRef = collection(db, 'patient_data')
+    const sympRef = doc(db, 'patient_symptoms', ID)
 
     // Reference for the patient_data in the realtime database
     const realRef = ref(real, '/users');
@@ -31,6 +33,15 @@ export const Details = (props) => {
             setPatient(data.docs.map((doc) => ({
                 ...doc.data(), id: doc.id
             })))
+        }
+
+        const getSync = async () => {
+            // Wait until the data is retreived
+            const data = await getDoc(sympRef);
+
+
+            //Storing the data locally
+            setSymptoms(data.data())
         }
 
         const getReal = async () => {
@@ -54,8 +65,10 @@ export const Details = (props) => {
 
         // Calling the functions
         getData();
+        getSync();
         getReal();
     }, [])
+
 
     // Verifing if patient id exists in the {patient} list
     for (var item in patient) {
@@ -64,12 +77,17 @@ export const Details = (props) => {
         }
     }
 
+    var Sympt = undefined;
+    if (typeof(Symptoms.symptoms) == 'string'){
+        Sympt = Symptoms.symptoms.split(" ");
+        console.log(Sympt[0])
+    }
+
     // Variables for all list type data
     const Curr = patient.Curr_Med
     const Past = patient.Past_Med
     const Gen = patient.Gen_D
     const Alle = patient.Allergy
-
     const Phone = patient.Phone
 
     const Redirect = () => {
@@ -120,7 +138,7 @@ export const Details = (props) => {
                     </div>
                     <div className="mt-4" id='Info'>
 
-                        <p className='btn info-btn'>Age :  {getAge(patient.Date)} </p>
+                        <p className='btn info-btn'>Age :     {getAge(patient.Date)} </p>
                         <p className='btn info-btn'>Gender :  {patient.Gender} </p>
                         <p className='btn info-btn'>Height :  {patient.Height} </p>
                         <p className='btn info-btn'>Weight :  {patient.Weight} </p>
@@ -133,8 +151,18 @@ export const Details = (props) => {
                     </div>
                 </div>
                 <div className='more-info'>
-                    
-
+                <div className='past-info m-3'>
+                    <h2> Symptoms </h2>
+                        <ol>
+                            {
+                                Sympt ?
+                                    Sympt.map((item, i) => (
+                                        <li key={i}>{item}</li>
+                                    ))
+                                    : console.log(Sympt)
+                            }
+                        </ol>
+                    </div>
                     <div className='past-info m-3'>
                         <h2> Current Medications </h2>
                         <ol>
