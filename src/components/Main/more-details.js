@@ -65,7 +65,6 @@ export const Details = (props) => {
     }
 
     // Variables for all list type data
-    const Symp = patient.Sympt
     const Curr = patient.Curr_Med
     const Past = patient.Past_Med
     const Gen = patient.Gen_D
@@ -111,7 +110,7 @@ export const Details = (props) => {
     return (
         <div className='details-page'>
             <a className='btn btn-secondary left-btn' href='/home'> Home </a>
-            <button className='btn btn-primary' onClick={Redirect}>Chat</button>
+            <button className='btn btn-primary chat-btn' onClick={Redirect}>Chat</button>
             <div className='wrapper-detail'>
 
                 <h1 className='mt-5 mb-4'> {patient.Name} </h1>
@@ -134,23 +133,7 @@ export const Details = (props) => {
                     </div>
                 </div>
                 <div className='more-info'>
-                    <div className='past-info m-3'>
-                        <h2> Symptoms </h2>
-                        <ol>
-
-                            {
-                                // Cheking if Symptom list is not valid i.e 0  same applies to all other
-                                Symp ?
-                                    // Mapping all the Symptoms in <li> tag same applies to all other
-                                    Object.keys(patient.Sympt).map((item, i) => (
-                                        <li key={i}>{patient.Sympt[item]}</li>
-                                    ))
-                                    : console.log()
-
-                            }
-                        </ol>
-
-                    </div>
+                    
 
                     <div className='past-info m-3'>
                         <h2> Current Medications </h2>

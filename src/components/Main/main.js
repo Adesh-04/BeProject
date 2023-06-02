@@ -145,7 +145,7 @@ export const Main = () => {
                                     <td> {getPulse(item.id)} </td>
                                     <td> {getSpO2(item.id)} </td>
                                     <td> {item.Disease ? item.Disease : 'None'} </td>
-                                    <td> {item.Condition ? item.Prediction : 'None'} </td>
+                                    <td> {item.Predicted ? item.Predicted : 'None'} </td>
                                     <td> <a href={'/patient=' + item.id}   >link...</a></td>
                                 </tr>
                             ))

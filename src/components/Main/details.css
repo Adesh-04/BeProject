@@ -7,6 +7,20 @@
     background-position: 0 0,10px 10px;
     text-align: center;
 }
+
+.details-page > .left-btn{
+    position: absolute;
+    left: 1em;
+    top: .25em;
+    width: 5em;
+}
+
+.chat-btn{
+    position: absolute;
+    right: 1em;
+    top: .25em;
+    width: 5em;
+}
     
 #Info{
     background-color: white;

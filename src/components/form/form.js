@@ -22,7 +22,6 @@ export const AddForm = () => {
         Height: '',
         Name: '',
         Past_Med: {},
-        Symptoms: {},
         Weight: '',
         id: ''
     })
@@ -220,11 +219,6 @@ export const AddForm = () => {
                         <div className='form-allergy'>
                             <p className='form-label'> Allergies {'(comma separated)'}  :  </p>
                             <input onChange={handleChange} className='form-input' type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Allergy" title='Enter Comma Seperated' required />
-                        </div>
-                        
-                        <div className='form-symptom'>
-                            <p className='form-label'> Symptoms {'(comma separated)'}  :  </p>
-                            <input onChange={handleChange} className='form-input' type="text" pattern="[A-Za-z0-9 \s,'.-]+" name="Symptoms" title='Enter Comma Seperated' required />
                         </div>
 
                         <div className='form-disease'>
