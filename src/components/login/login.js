@@ -65,7 +65,7 @@ export const Login = () => {
 
             // Checking the password
             if (login[count].password === pwd) {
-                navigate('/')
+                navigate('/home')
             } else {
                 alert("Invalid Credentials")
             }

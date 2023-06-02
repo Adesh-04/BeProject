@@ -127,13 +127,13 @@ export const AddForm = () => {
             await setDoc(doc(db, 'patient_data' , details.id), details)
             alert('Data added successfully!')
 
-            navigate('/')
+            navigate('/home')
         }
     }
 
     return (
         <div className='form-wrapper'>
-            <button className="btn left-btn" ><a className='btn btn-primary' href='/'>Back </a> </button>
+            <button className="btn left-btn" ><a className='btn btn-primary' href='/home'>Back </a> </button>
             <h3 className='form-header'>Register Patient Data</h3>
             <form className='main-form' onSubmit={handleSubmit} autoComplete='off'>
                 <div className='row'>

@@ -103,7 +103,7 @@ export const Main = () => {
                             </li>
                         </ul>
                     </div>
-                    <button onClick={()=>{navigate('/home')}} className="btn btn-primary right-btn">Log Out</button>
+                    <button onClick={()=>{navigate('/')}} className="btn btn-primary right-btn">Log Out</button>
 
                 </div>
             </nav>
